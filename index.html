@@ -200,7 +200,7 @@
 <main id="grid" class="grid"></main>
 
 <footer class="site">
-  Balkonien · Lexikon v11 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
+  Balkonien · Lexikon v12 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
 </footer>
 
 </div>
@@ -1184,7 +1184,7 @@ const slideshowImages = JSON.parse(document.getElementById("slideshow-data").tex
     else if (e.key === "ArrowRight") { show(idx+1); restart(); }
   });
   let timer = null;
-  function start() { timer = setInterval(() => show(idx+1), 6000); }
+  function start() { timer = setInterval(() => show(idx+1), 3000); }
   function stop() { clearInterval(timer); }
   function restart() { stop(); start(); }
   stage.addEventListener("mouseenter", stop);
