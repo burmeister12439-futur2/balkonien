@@ -1,0 +1,930 @@
+[
+  {
+    "id": "buchweizen",
+    "name": "Buchweizen",
+    "wiss": "Fagopyrum esculentum",
+    "familie": "Knöterichgewächse (Polygonaceae)",
+    "wikiTitle": "Echter_Buchweizen",
+    "emoji": "🌾",
+    "herkunft": "Zentral- und Ostasien",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–60 cm",
+    "bluete": "Juni–September (weiß-rosa)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Direktsaat Mai–Juni",
+    "desc": "Pseudogetreide aus der Familie der Knöterichgewächse. Schnell wachsend, übernimmt freie Flächen rasch und verdrängt Unkräuter.",
+    "care": "Pflegeleicht. Liebt nährstoffarmen, durchlässigen Boden — keinesfalls düngen. Nach der Blüte abschneiden oder als Gründüngung in den Topf einarbeiten.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Gründüngung"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Echter_Buchweizen"
+      },
+      {
+        "label": "NABU-Steckbrief",
+        "url": "https://www.nabu.de/tiere-und-pflanzen/aktionen-und-projekte/insektensommer/insektenwissen/27598.html"
+      }
+    ],
+    "typ": "Nutzpflanze"
+  },
+  {
+    "id": "clematis",
+    "name": "Clematis (Waldrebe)",
+    "wiss": "Clematis spp.",
+    "familie": "Hahnenfußgewächse (Ranunculaceae)",
+    "wikiTitle": "Waldreben",
+    "emoji": "💜",
+    "herkunft": "Gemäßigte Zonen weltweit",
+    "lebensdauer": "mehrjährig (Kletterpflanze)",
+    "hoehe": "bis 4 m",
+    "bluete": "Mai–September, je nach Sorte",
+    "sonne": "sonnig (Fuß im Schatten)",
+    "wasser": "mäßig–hoch",
+    "pflanzzeit": "Frühjahr oder Herbst",
+    "desc": "„Königin der Kletterpflanzen”. Über 300 Arten von der zarten Bergclematis bis zur großblütigen Hybride. Braucht Rankhilfe.",
+    "care": "Goldene Regel: Kopf in der Sonne, Fuß im Schatten — Wurzelbereich mit Steinen oder flachen Stauden beschatten. Rückschnitt sortenabhängig (drei Schnittgruppen).",
+    "badges": [
+      "bienenfreundlich"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Waldreben"
+      },
+      {
+        "label": "Pflegetipps (NDR)",
+        "url": "https://www.ndr.de/ratgeber/garten/Clematis-richtig-pflanzen-und-pflegen,clematis120.html"
+      }
+    ],
+    "typ": "Kletterpflanze"
+  },
+  {
+    "id": "diamantgras",
+    "name": "Diamantgras",
+    "wiss": "Calamagrostis brachytricha (Syn. Achnatherum brachytrichum)",
+    "familie": "Süßgräser (Poaceae)",
+    "wikiTitle": "",
+    "emoji": "💎",
+    "herkunft": "Ostasien (Korea, China, Japan)",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "90–120 cm (Breite ca. 50 cm)",
+    "bluete": "August–November (silbrig-weiße Rispen, später bronzefarben)",
+    "sonne": "halbschattig–sonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "typ": "Gras",
+    "desc": "Strukturgras aus Korea — seinen Namen verdankt es den Wassertropfen, die sich nach Regen oder Tau in den dichten silbrig-weißen Rispen sammeln und in der Sonne wie Diamanten funkeln. Der große Auftritt kommt im Spätsommer und Herbst, das Rispengerüst bleibt bis tief in den Winter attraktiv. Eines der wenigen Gräser, die auch im Halbschatten zuverlässig blühen.",
+    "care": "Anspruchslos und extrem langlebig: bis −26 °C winterhart, kann 10 bis 20 Jahre am gleichen Standort bleiben und sollte nie geteilt werden — er wird mit den Jahren immer schöner. Boden gern sandig-durchlässig, Staunässe vermeiden. Im zeitigen Frühjahr bodennah zurückschneiden oder das alte Laub einfach auszupfen. Schöne Partner: Sedum, Gaura, Herbst-Anemonen, Knöterich, Rosen.",
+    "badges": [
+      "winterhart",
+      "winterstruktur",
+      "schattenverträglich",
+      "langlebig",
+      "Vasenschnitt"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (EN)",
+        "url": "https://en.wikipedia.org/wiki/Calamagrostis_brachytricha"
+      },
+      {
+        "label": "NaturaDB",
+        "url": "https://www.naturadb.de/pflanzen/calamagrostis-brachytricha/"
+      },
+      {
+        "label": "PflanzenReich",
+        "url": "https://www.pflanzenreich.com/enzyklopaedie/calamagrostis-arundinacea-var-brachytricha/"
+      },
+      {
+        "label": "Master-Stauden",
+        "url": "https://www.master-stauden.de/sortiment/1513-calamagrostis-brachytricha"
+      }
+    ],
+    "localImage": "Bilder/Diamantgras.png",
+    "photoCredit": "Foto: Klaus"
+  },
+  {
+    "id": "dreifarbige-winde",
+    "name": "Dreifarbige Winde",
+    "wiss": "Convolvulus tricolor",
+    "familie": "Windengewächse (Convolvulaceae)",
+    "wikiTitle": "Dreifarbige_Winde",
+    "emoji": "🌀",
+    "herkunft": "Makaronesien, Mittelmeerraum bis Mauretanien",
+    "lebensdauer": "einjährig",
+    "hoehe": "20–40 cm",
+    "bluete": "Juni–September (blau-weiß-gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Direktsaat April–Mai",
+    "desc": "Niedrig wachsende Verwandte der Ackerwinde — aber nicht wuchernd! Trichterblüten öffnen morgens und schließen abends. Drei Farbringe gaben ihr den Namen.",
+    "care": "Sonniger, durchlässiger Standort. Nicht zu nährstoffreich. Verblühtes regelmäßig entfernen verlängert die Blüte.",
+    "badges": [
+      "bienenfreundlich"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Dreifarbige_Winde"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "flaschenbuerstengras",
+    "name": "Flaschenbürstengras",
+    "wiss": "Pennisetum alopecuroides",
+    "familie": "Süßgräser (Poaceae)",
+    "wikiTitle": "Lampenputzergras",
+    "emoji": "🌾",
+    "herkunft": "Ostasien, Australien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "30–90 cm",
+    "bluete": "August–Oktober (rosabraune flaschenbürstenartige Ähren)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "desc": "Auch „Lampenputzergras” genannt. Die kuscheligen, langen Ährenrispen sind das Markenzeichen. Strukturpflanze mit schönem Herbst- und Wintergerüst.",
+    "care": "Erst im Frühjahr (März) zurückschneiden — die alten Halme sind Winterschutz und Wintergrafik zugleich. Durchlässige Erde, in Berlin sicherheitshalber etwas einpacken.",
+    "badges": [
+      "winterstruktur"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Lampenputzergras"
+      }
+    ],
+    "typ": "Gras"
+  },
+  {
+    "id": "garten-reitgras",
+    "name": "Garten-Reitgras",
+    "wiss": "Calamagrostis × acutiflora 'Karl Foerster'",
+    "familie": "Süßgräser (Poaceae)",
+    "wikiTitle": "Reitgräser",
+    "emoji": "🌾",
+    "herkunft": "Europäische Hybride (Bornimer Auslese)",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "120–160 cm",
+    "bluete": "Juni–September (zunächst rosabraun, später strohgelb)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung März–Mai",
+    "desc": "Säulenförmig aufrecht wachsende Strukturstaude, benannt nach dem Bornimer Staudengärtner Karl Foerster. Bleibt auch im Winter aufrecht stehen.",
+    "care": "Anspruchslos und winterhart. Rückschnitt im zeitigen Frühjahr auf 10 cm. Durchlässiger Boden, kommt mit Trockenheit gut zurecht.",
+    "badges": [
+      "winterstruktur",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Calamagrostis_%C3%97_acutiflora"
+      }
+    ],
+    "typ": "Gras"
+  },
+  {
+    "id": "gemeine-hundspetersilie",
+    "name": "Gemeine Hundspetersilie",
+    "wiss": "Aethusa cynapium",
+    "familie": "Doldenblütler (Apiaceae)",
+    "wikiTitle": "Hundspetersilie",
+    "emoji": "⚠️",
+    "herkunft": "Europa",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–80 cm",
+    "bluete": "Juli–September (weiße Dolden)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat März–April",
+    "desc": "Auch „Gartenschierling” genannt. Sieht aus wie Petersilie, ist aber giftig — Verwechslung ist gefährlich. Findet sich oft als „blinder Passagier” in Pflanzentöpfen.",
+    "care": "Wächst von selbst, wo sie gebraucht oder geduldet wird. ACHTUNG: Nicht mit Petersilie verwechseln! Die Blätter riechen beim Zerreiben unangenehm — Petersilie duftet würzig.",
+    "badges": [
+      "giftig",
+      "Wildkraut"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gartenschierling"
+      }
+    ],
+    "typ": "Wildkraut"
+  },
+  {
+    "id": "natternkopf",
+    "name": "Gewöhnlicher Natternkopf",
+    "wiss": "Echium vulgare",
+    "familie": "Raublattgewächse (Boraginaceae)",
+    "wikiTitle": "Gewöhnlicher_Natternkopf",
+    "emoji": "🐝",
+    "herkunft": "Europa, Westasien",
+    "lebensdauer": "zweijährig",
+    "hoehe": "30–100 cm",
+    "bluete": "Mai–Oktober (blau, gelegentlich weiß)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat April",
+    "desc": "Einer der besten Bienen- und Wildbienenweiden überhaupt — Hummeln und Solitärbienen lieben ihn. Form der Blüte erinnert an einen Schlangenkopf mit herausgestreckten Staubblättern (daher der Name). Selten kommt eine weißblütige Form vor.",
+    "care": "Trockenkünstler. Mageren, kalkhaltigen, durchlässigen Boden bevorzugen. Sät sich selbst aus. Bildet im ersten Jahr eine Blattrosette, blüht im zweiten Jahr — danach verabschiedet er sich.",
+    "badges": [
+      "bienenfreundlich",
+      "Wildbienen",
+      "Trockenheit"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gew%C3%B6hnlicher_Natternkopf"
+      },
+      {
+        "label": "Wildbienen-Steckbrief",
+        "url": "https://www.wildbiene.com/blog/natternkopf-echium-vulgare/"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "gilbweiderich",
+    "name": "Gilbweiderich",
+    "wiss": "Lysimachia vulgaris",
+    "familie": "Primelgewächse (Primulaceae)",
+    "wikiTitle": "Gewöhnlicher_Gilbweiderich",
+    "emoji": "💛",
+    "herkunft": "Eurasien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "60–150 cm",
+    "bluete": "Juni–August (leuchtend gelb)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "hoch",
+    "pflanzzeit": "Pflanzung Frühjahr oder Herbst",
+    "desc": "Wildstaude feuchter Wiesen und Ufer. Im Topf braucht er konstante Feuchte. Bildet Ausläufer — gerne in einen begrenzten Topf setzen.",
+    "care": "Feucht halten, niemals austrocknen lassen. Bei Ausbreitungsdrang regelmäßig teilen. Komplett winterhart.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gew%C3%B6hnlicher_Gilbweiderich"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "hibiskus",
+    "name": "Hibiskus (Garten-Eibisch)",
+    "wiss": "Hibiscus syriacus",
+    "familie": "Malvengewächse (Malvaceae)",
+    "wikiTitle": "Hibiscus_syriacus",
+    "emoji": "🌺",
+    "herkunft": "Ost- und Südasien",
+    "lebensdauer": "mehrjährig (Strauch)",
+    "hoehe": "2–3 m",
+    "bluete": "Juli–September (rosa, lila, weiß, blau)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "desc": "Winterharter Hibiskus für unsere Breiten. Treibt spät aus — keine Panik, wenn er im Mai noch kahl steht. Große trompetenförmige Blüten, jede einzelne hält nur einen Tag.",
+    "care": "Pflegeleicht. Im Frühjahr leicht zurückschneiden für üppige Blüte. Liebt durchlässigen, nährstoffreichen Boden. Im Topf gut wässern, ohne Staunässe.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Garten-Eibisch"
+      }
+    ],
+    "typ": "Strauch"
+  },
+  {
+    "id": "himmelsroeschen",
+    "name": "Himmelsröschen",
+    "wiss": "Silene coeli-rosa (Viscaria oculata)",
+    "familie": "Nelkengewächse (Caryophyllaceae)",
+    "wikiTitle": "Himmelsröschen",
+    "emoji": "🌸",
+    "herkunft": "Mittelmeerraum",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–50 cm",
+    "bluete": "Juni–September (rosa, lila, weiß, oft mit Auge)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat April",
+    "desc": "Zarte Sommerblume mit himmelweit geöffneten Blüten und kontrastierendem Auge in der Mitte. Klassiker des Bauerngartens.",
+    "care": "Sonniger, durchlässiger Standort. Direktsaat ins Beet oder den Topf. Bei guter Pflege durchblühend bis zum Frost.",
+    "badges": [
+      "bienenfreundlich"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Himmelsr%C3%B6schen"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "hornklee",
+    "name": "Hornklee",
+    "wiss": "Lotus corniculatus",
+    "familie": "Hülsenfrüchtler (Fabaceae)",
+    "wikiTitle": "Gewöhnlicher_Hornklee",
+    "emoji": "🌿",
+    "herkunft": "Eurasien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "10–30 cm",
+    "bluete": "Mai–September (gelb-orange)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat Frühjahr",
+    "desc": "Heimische Wildstaude, kommt mit kargen Standorten zurecht. Wichtige Futterpflanze für Bläulinge und andere Schmetterlingsraupen. Reichert wie alle Hülsenfrüchtler den Boden mit Stickstoff an.",
+    "care": "Sehr genügsam. Mageren, durchlässigen Boden bevorzugen. Praktisch wartungsfrei, winterhart.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlingsraupen",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gew%C3%B6hnlicher_Hornklee"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "island-mohn",
+    "name": "Island-Mohn",
+    "wiss": "Papaver nudicaule",
+    "familie": "Mohngewächse (Papaveraceae)",
+    "wikiTitle": "Islandmohn",
+    "emoji": "🌺",
+    "herkunft": "Arktis und Subarktis (Nordamerika, Sibirien)",
+    "lebensdauer": "kurzlebige Staude (oft als zwei- oder einjährig kultiviert)",
+    "hoehe": "20–50 cm",
+    "bluete": "Mai–August (gelb, orange, rot, weiß, lachs)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat Frühjahr oder Herbst",
+    "desc": "Zarte Mohnart aus Arktis und Subarktis. Die feinen, seidigen Blüten in leuchtenden Gelb-, Orange- und Rottönen sitzen auf langen, behaarten Stielen und tanzen bei jeder Brise wie schwebende Schmetterlinge. Liebt kühles Wetter — in heißen Sommern kurzlebig, dafür sät er sich willig aus.",
+    "care": "Vollsonnig und durchlässig, mag aber keine Sommerhitze — im Frühjahr und Herbst zeigt er sich am schönsten. Direktsaat funktioniert am besten, Wurzeln lassen sich kaum verpflanzen. Verblühtes regelmäßig ausschneiden verlängert die Blüte. Sät sich von selbst aus, wenn man Samenkapseln stehen lässt.",
+    "badges": [
+      "bienenfreundlich",
+      "Selbstaussaat",
+      "Schnittblume"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Islandmohn"
+      }
+    ],
+    "typ": "Blume",
+    "localImage": "Bilder/island-mohn-m078667_w_7.webp",
+    "photoCredit": "Foto: Klaus"
+  },
+  {
+    "id": "knoeterich",
+    "name": "Knöterich",
+    "wiss": "Persicaria affinis (u. a.)",
+    "familie": "Knöterichgewächse (Polygonaceae)",
+    "wikiTitle": "Persicaria_affinis",
+    "emoji": "🌸",
+    "herkunft": "Himalaya",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "15–25 cm",
+    "bluete": "Juni–Oktober (rosa, später dunkelrot)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "desc": "Niedriger, polsterbildender Bodendecker (nicht zu verwechseln mit dem invasiven Japanischen Staudenknöterich!). Walzenförmige Blütenähren über glänzenden Blättern. Lange Blütezeit.",
+    "care": "Sehr pflegeleicht. Winterhart. Bei Bedarf im Frühjahr zurückschneiden. Gut für Topf-Vordergrund.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (Persicaria)",
+        "url": "https://de.wikipedia.org/wiki/Kn%C3%B6teriche"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "kornblume",
+    "name": "Kornblume",
+    "wiss": "Centaurea cyanus",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Kornblume",
+    "emoji": "🔵",
+    "herkunft": "Eurasien",
+    "lebensdauer": "einjährig",
+    "hoehe": "40–100 cm",
+    "bluete": "Juni–September (leuchtend kornblumenblau)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat März–April oder Herbst",
+    "desc": "Einst häufige Begleiterin von Getreidefeldern, durch Herbizide selten geworden. Symbolpflanze für den Naturschutz. Die Blütenblätter sind essbar und werden gern in Salate gestreut.",
+    "care": "Direktsaat — verträgt das Verpflanzen schlecht. Magerer, durchlässiger Boden. Kein Dünger. Sät sich bei Gefallen selbst aus.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Kornblume"
+      },
+      {
+        "label": "NABU",
+        "url": "https://www.nabu.de/tiere-und-pflanzen/pflanzen/wildpflanzen/14587.html"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "kornrade",
+    "name": "Kornrade",
+    "wiss": "Agrostemma githago",
+    "familie": "Nelkengewächse (Caryophyllaceae)",
+    "wikiTitle": "Kornrade",
+    "emoji": "🌺",
+    "herkunft": "Östliches Mittelmeer, mit Getreide nach Mitteleuropa eingebürgert",
+    "lebensdauer": "einjährig",
+    "hoehe": "60–100 cm",
+    "bluete": "Juni–August (purpurrosa)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat April oder Herbst",
+    "desc": "Früher allgegenwärtiges Ackerunkraut, heute auf der Roten Liste. Schlanke, hochaufgeschossene Pflanze mit großen rosa Blüten. ACHTUNG: Die Samen sind giftig (Saponine).",
+    "care": "Direktsaat in den Topf oder ins Beet. Verträgt Trockenheit. Selbstaussaat möglich. Reife Samenkapseln nicht mit Kindern oder Tieren in Kontakt bringen.",
+    "badges": [
+      "bienenfreundlich",
+      "giftig",
+      "Rote Liste"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Kornrade"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "lein",
+    "name": "Lein",
+    "wiss": "Linum usitatissimum / L. perenne",
+    "familie": "Leingewächse (Linaceae)",
+    "wikiTitle": "Saat-Lein",
+    "emoji": "💙",
+    "herkunft": "Eurasien",
+    "lebensdauer": "einjährig (Saat-Lein) / mehrjährig (Stauden-Lein)",
+    "hoehe": "30–80 cm",
+    "bluete": "Juni–August (himmelblau)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat April",
+    "desc": "Eine der ältesten Kulturpflanzen Europas — Faser- und Ölpflanze in einem. Die Blüten öffnen sich nur am Vormittag und fallen am gleichen Tag wieder ab. Wer sehen will, muss früh aufstehen.",
+    "care": "Direktsaat, durchlässiger, eher magerer Boden. Stauden-Lein (Linum perenne) blüht jedes Jahr neu auf — eine Empfehlung für den Topf.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (Saat-Lein)",
+        "url": "https://de.wikipedia.org/wiki/Saat-Lein"
+      }
+    ],
+    "typ": "Nutzpflanze"
+  },
+  {
+    "id": "duftnessel",
+    "name": "Limonen-Duftnessel",
+    "wiss": "Agastache mexicana",
+    "familie": "Lippenblütler (Lamiaceae)",
+    "wikiTitle": "Duftnesseln",
+    "emoji": "🍃",
+    "herkunft": "Mexiko",
+    "lebensdauer": "mehrjährig (bei uns oft einjährig kultiviert)",
+    "hoehe": "60–90 cm",
+    "bluete": "Juli–Oktober (rosa, lila, weiß)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Mai",
+    "desc": "Duftet intensiv nach Zitrone, wenn man die Blätter zerreibt. Magnet für Bienen, Hummeln und Schmetterlinge.",
+    "care": "Liebt warme, durchlässige Standorte. In Berlin nur bedingt winterhart — im Topf besser frostfrei überwintern oder neu aussäen. Blätter und Blüten für Tee.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "duftend"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Duftnesseln"
+      }
+    ],
+    "typ": "Kraut"
+  },
+  {
+    "id": "malve",
+    "name": "Malve",
+    "wiss": "Malva sylvestris / moschata / alcea",
+    "familie": "Malvengewächse (Malvaceae)",
+    "wikiTitle": "Malven",
+    "emoji": "💜",
+    "herkunft": "Eurasien, Nordafrika",
+    "lebensdauer": "mehrjährig (oft 2–3 Jahre)",
+    "hoehe": "50–150 cm",
+    "bluete": "Juni–September (rosa-violett)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat Frühjahr oder Herbst",
+    "desc": "Uralte Heil- und Nutzpflanze — Blätter und Blüten essbar, schleimstoffhaltig (Hustentee). Die Wilde Malve sät sich selbst aus und taucht jedes Jahr wieder auf.",
+    "care": "Anspruchslos. Sonniger, durchlässiger Standort. Anfällig für Malvenrost — befallene Blätter entfernen, nicht überkopf gießen.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Heilpflanze"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Malven"
+      }
+    ],
+    "typ": "Kraut"
+  },
+  {
+    "id": "maedchenauge",
+    "name": "Mädchenauge",
+    "wiss": "Coreopsis grandiflora / lanceolata",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Mädchenaugen",
+    "emoji": "💛",
+    "herkunft": "Nordamerika (Prärie)",
+    "lebensdauer": "mehrjährig (oft kurzlebige Staude)",
+    "hoehe": "40–70 cm",
+    "bluete": "Juni–September (leuchtend gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung April–Mai",
+    "desc": "Dauerblüher der nordamerikanischen Prärien. Übersät sich von Juni bis in den Herbst mit gelben Blüten. Lockt Schmetterlinge und Hummeln an.",
+    "care": "Liebt Sonne und durchlässigen Boden. Verblühtes regelmäßig abschneiden verlängert die Blüte massiv. Im Topf bedingt winterhart — Schutz hilft.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlinge"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/M%C3%A4dchenaugen"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "ringelblume",
+    "name": "Ringelblume",
+    "wiss": "Calendula officinalis",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Ringelblume",
+    "emoji": "🧡",
+    "herkunft": "Mittelmeerraum",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–60 cm",
+    "bluete": "Juni–Oktober (orange, gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat März–April",
+    "desc": "Klassische Bauerngartenpflanze und eine der wichtigsten Heilpflanzen Europas (Calendula-Salbe). Die Blüten sind essbar und färben Kräuterquark und Salate goldgelb.",
+    "care": "Direktsaat ist am einfachsten. Sät sich anschließend selbst aus — Ringelblumen-Nachwuchs ist garantiert. Verblühtes regelmäßig pflücken verlängert die Blüte.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Heilpflanze"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Ringelblume"
+      }
+    ],
+    "typ": "Kraut"
+  },
+  {
+    "id": "schachtelhalm",
+    "name": "Schachtelhalm",
+    "wiss": "Equisetum spp.",
+    "familie": "Schachtelhalmgewächse (Equisetaceae)",
+    "wikiTitle": "Schachtelhalme",
+    "emoji": "🎋",
+    "herkunft": "Weltweit",
+    "lebensdauer": "mehrjährig",
+    "hoehe": "20–80 cm (Ackerschachtelhalm: bis 50 cm)",
+    "bluete": "blütenlos — Sporenpflanze",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "hoch",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "desc": "Lebende Fossilien — die Vorfahren bildeten in der Karbonzeit ganze Wälder. Wurzeln tief und treiben hartnäckig aus, deshalb im Garten gefürchtet, im Topf aber gut zu halten. Liefert biodynamisches Pflanzenstärkungsmittel (Schachtelhalmbrühe gegen Pilzbefall).",
+    "care": "Unbedingt in einem Topf halten — niemals direkt in den Garten oder ein nicht abgegrenztes Hochbeet pflanzen! Liebt Feuchte. Mit den Trieben einen Sud kochen und die anderen Pflanzen damit spritzen.",
+    "badges": [
+      "winterhart",
+      "Heilpflanze"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Schachtelhalme"
+      }
+    ],
+    "typ": "Wildkraut"
+  },
+  {
+    "id": "schwarzkuemmel",
+    "name": "Schwarzkümmel / Jungfer im Grünen",
+    "wiss": "Nigella sativa / N. damascena",
+    "familie": "Hahnenfußgewächse (Ranunculaceae)",
+    "wikiTitle": "Echter_Schwarzkümmel",
+    "emoji": "💙",
+    "herkunft": "Vorderasien, Mittelmeerraum",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–60 cm",
+    "bluete": "Juni–August (blau, weiß, rosa)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat April",
+    "desc": "Zwei Verwandte: Nigella sativa (Echter Schwarzkümmel) liefert das bekannte Gewürz; Nigella damascena („Jungfer im Grünen”) ist die filigrane Zierform mit Blüten zwischen federfein zerteiltem Blattwerk. Beide haben spektakuläre Samenkapseln, die wie kleine Laternen aussehen.",
+    "care": "Direktsaat. Pflegeleicht. Sät sich gern selbst aus. Samenkapseln als Trockenblumenschmuck verwenden.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (Echter Schwarzkümmel)",
+        "url": "https://de.wikipedia.org/wiki/Echter_Schwarzk%C3%BCmmel"
+      },
+      {
+        "label": "Jungfer im Grünen",
+        "url": "https://de.wikipedia.org/wiki/Jungfer_im_Gr%C3%BCnen"
+      }
+    ],
+    "typ": "Kraut"
+  },
+  {
+    "id": "sonnenblume",
+    "name": "Sonnenblume",
+    "wiss": "Helianthus annuus",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Sonnenblume",
+    "emoji": "🌻",
+    "herkunft": "Nordamerika",
+    "lebensdauer": "einjährig",
+    "hoehe": "1–3 m",
+    "bluete": "Juli–Oktober (gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "hoch",
+    "pflanzzeit": "Direktsaat April–Mai",
+    "desc": "Der Klassiker. Junge Pflanzen folgen mit der Knospe dem Sonnenlauf (Heliotropismus); die ausgewachsene Blüte zeigt fest nach Osten. Vogel- und Insektenmagnet, Samen sind nahrhaft.",
+    "care": "Tiefe Töpfe wählen, regelmäßig wässern, gelegentlich düngen. Hohe Sorten bei Wind anbinden. Nach der Blüte die Köpfe stehen lassen — Meisen und Finken sind dankbar.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Vögel"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gemeine_Sonnenblume"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "spinnenblume",
+    "name": "Spinnenblume",
+    "wiss": "Tarenaya hassleriana (Cleome)",
+    "familie": "Kapernsträucher (Cleomaceae)",
+    "wikiTitle": "Tarenaya_hassleriana",
+    "emoji": "🕷️",
+    "herkunft": "Südamerika",
+    "lebensdauer": "einjährig",
+    "hoehe": "60–120 cm",
+    "bluete": "Juli–Oktober (rosa, weiß, lila)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung nach den Eisheiligen (Mitte Mai)",
+    "desc": "Exotisch wirkende Sommerblume mit großen Blütendolden, aus denen lange Staubgefäße herausragen wie Spinnenbeine. Wächst rasch zu einer stattlichen Pflanze heran.",
+    "care": "Wärmeliebend — erst nach den Eisheiligen ins Freie. Sonnig und gut wässern, aber keine Staunässe. Verträgt keine Berliner Spätfröste.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlinge"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (Spinnenpflanzen)",
+        "url": "https://de.wikipedia.org/wiki/Spinnenpflanzen"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "storchschnabel",
+    "name": "Storchschnabel",
+    "wiss": "Geranium spp.",
+    "familie": "Storchschnabelgewächse (Geraniaceae)",
+    "wikiTitle": "Storchschnäbel",
+    "emoji": "💜",
+    "herkunft": "Weltweit (über 400 Arten)",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "20–80 cm",
+    "bluete": "Mai–September",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr oder Herbst",
+    "desc": "Den Namen verdankt er den Samenkapseln, die wie Storchenschnäbel geformt sind. Echte Geranien (nicht zu verwechseln mit den Balkon-„Geranien”, die eigentlich Pelargonien sind!). Sehr ausdauernd und pflegeleicht.",
+    "care": "Praktisch wartungsfrei. Nach der ersten Blüte stark zurückschneiden — viele Arten blühen dann ein zweites Mal. Komplett winterhart.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Storchschn%C3%A4bel"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "strand-levkoje",
+    "name": "Strand-Levkoje",
+    "wiss": "Malcolmia maritima",
+    "familie": "Kreuzblütler (Brassicaceae)",
+    "wikiTitle": "Strand-Levkoje",
+    "emoji": "💗",
+    "herkunft": "Östliches Mittelmeer",
+    "lebensdauer": "einjährig",
+    "hoehe": "15–30 cm",
+    "bluete": "Juni–Oktober (rosa, lila, weiß)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat April (auch noch später möglich)",
+    "desc": "Schnellster Blüher unter den Sommerblumen: vier bis sechs Wochen nach der Aussaat steht sie in voller Blüte. Klein, zart und vielblütig — ideal für die schnelle Beet- oder Topfbegrünung.",
+    "care": "Direktsaat, möglichst gleich an Ort und Stelle. Mehrfach nachsäen verlängert die Blühperiode. Anspruchslos und genügsam.",
+    "badges": [
+      "bienenfreundlich",
+      "schnell"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Strand-Levkoje"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "strand-silberkraut",
+    "name": "Strand-Silberkraut (Duftsteinrich)",
+    "wiss": "Lobularia maritima",
+    "familie": "Kreuzblütler (Brassicaceae)",
+    "wikiTitle": "Strand-Silberkraut",
+    "emoji": "🤍",
+    "herkunft": "Mittelmeerraum, Kanaren",
+    "lebensdauer": "einjährig (in mildem Klima mehrjährig)",
+    "hoehe": "10–30 cm",
+    "bluete": "Mai–Oktober (weiß, rosa, lila)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat März–April",
+    "desc": "Auch „Duftsteinrich” oder „Strandkresse” genannt. Honigsüßer Duft, der Bienen und Schwebfliegen massenhaft anlockt. Niedriger, dichter Bodendecker oder Polster für Trog- und Kübelränder.",
+    "care": "Sehr trockenheitsverträglich. Bei nachlassender Blüte mit der Schere zurückschneiden — treibt rasch neu durch. Sät sich selbst aus.",
+    "badges": [
+      "bienenfreundlich",
+      "duftend",
+      "Trockenheit"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Strand-Silberkraut"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "wald-schaumkraut",
+    "name": "Wald-Schaumkraut",
+    "wiss": "Cardamine flexuosa",
+    "familie": "Kreuzblütler (Brassicaceae)",
+    "wikiTitle": "Wald-Schaumkraut",
+    "emoji": "🤍",
+    "herkunft": "Europa, weite Teile Asiens",
+    "lebensdauer": "einjährig bis zweijährig",
+    "hoehe": "10–50 cm",
+    "bluete": "April–September (kleine weiße Blüten in Trauben)",
+    "sonne": "halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Selbstaussaat — meist als ungebetener Gast in Pflanzentöpfen",
+    "desc": "Kleine, unscheinbare Verwandte des bekannteren Wiesen-Schaumkrauts. Wirkt wie ein Wildkraut, ist aber essbar — die jungen Blätter schmecken angenehm kresseartig scharf. Reife Samenschoten schleudern beim Berühren ihre Samen meterweit weg, eine kleine Naturbeobachtung wert.",
+    "care": "Pflegeleicht bis aufdringlich. Mag feuchte, halbschattige Standorte. Wenn er sich nicht zu sehr ausbreiten soll, vor der Samenreife schneiden — sonst übernimmt er gerne den Topf. Junge Blätter in Salat oder Kräuterquark verwenden.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Selbstaussaat",
+      "Wildkraut"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Wald-Schaumkraut"
+      }
+    ],
+    "typ": "Wildkraut"
+  },
+  {
+    "id": "weisser-steinklee",
+    "name": "Weißer Steinklee",
+    "wiss": "Melilotus albus",
+    "familie": "Hülsenfrüchtler (Fabaceae)",
+    "wikiTitle": "Weißer_Steinklee",
+    "emoji": "🤍",
+    "herkunft": "Eurasien",
+    "lebensdauer": "zweijährig (selten einjährig)",
+    "hoehe": "50–150 cm",
+    "bluete": "Juni–September (kleine weiße Blüten in langen Trauben)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat April–Mai oder Herbst",
+    "desc": "Hochwüchsige Wildpflanze und einer der wertvollsten Bienenweiden überhaupt — Imker schätzen ihn sehr. Duftet stark nach Cumarin (Heugeruch), besonders beim Trocknen. Wie alle Hülsenfrüchtler reichert er den Boden mit Stickstoff an.",
+    "care": "Anspruchslos. Liebt magere, durchlässige, kalkhaltige Standorte und kommt mit Trockenheit gut zurecht. Sät sich selbst aus — im Topf einfach blühen und Samen reifen lassen. Beim Trocknen auf trockene Lagerung achten: bei Schimmelbefall können toxische Cumarin-Derivate (Dicumarol) entstehen.",
+    "badges": [
+      "bienenfreundlich",
+      "Wildbienen",
+      "Trockenheit",
+      "Heilpflanze",
+      "Selbstaussaat"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Wei%C3%9Fer_Steinklee"
+      },
+      {
+        "label": "NABU-Bienenweiden",
+        "url": "https://www.nabu.de/tiere-und-pflanzen/aktionen-und-projekte/insektensommer/insektenwissen/27598.html"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "wiesen-pippau",
+    "name": "Wiesen-Pippau",
+    "wiss": "Crepis biennis",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Wiesen-Pippau",
+    "emoji": "💛",
+    "herkunft": "Europa",
+    "lebensdauer": "zweijährig",
+    "hoehe": "30–130 cm",
+    "bluete": "Mai–Juli (leuchtend gelb, löwenzahnähnlich, in lockeren Rispen)",
+    "sonne": "vollsonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat Frühjahr oder Herbst",
+    "desc": "Heimische Wiesenstaude, deren gelbe Blüten an Löwenzahn erinnern — aber statt einer Einzelblüte trägt der Pippau verzweigte Stängel mit vielen kleinen Körbchen. Wichtige Pollen- und Nektarquelle für Wildbienen, Schwebfliegen und Schmetterlinge in einer Zeit, in der das Wiesenangebot oft schon gemäht ist.",
+    "care": "Sehr genügsam. Mag eher kalkhaltige Böden, kommt aber überall durch. Blüht im zweiten Jahr und stirbt dann ab — Samenstände stehen lassen, dann zieht er von selbst nach. Vorsicht beim Topfen: kräftige Pfahlwurzel, lieber gleich tief säen.",
+    "badges": [
+      "bienenfreundlich",
+      "Wildbienen",
+      "Schmetterlinge",
+      "Selbstaussaat"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Wiesen-Pippau"
+      },
+      {
+        "label": "NABU-Wildbienen",
+        "url": "https://www.nabu.de/tiere-und-pflanzen/insekten-und-spinnen/insekten/bienen-und-wespen/index.html"
+      }
+    ],
+    "typ": "Wildkraut"
+  }
+]

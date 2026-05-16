@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balkonien — Das Lexikon meiner Balkon-Pflanzen</title>
+<style>
+  :root {
+    --bg:#f6f4ee; --paper:#fffdf7; --ink:#2a2a26; --ink-soft:#5a5a52;
+    --green:#4a6b3a; --green-soft:#8fa57f; --green-pale:#e6ede0;
+    --accent:#b8714a; --rule:#d8d5cb;
+    --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.06);
+    --radius:14px;
+  }
+  * { box-sizing:border-box; }
+  html, body { margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1280px; margin:0 auto; padding:40px 24px 80px; }
+  header.site { text-align:center; padding:48px 16px 32px;
+    border-bottom:1px solid var(--rule); margin-bottom:32px; position:relative; }
+  header.site .leaf { display:inline-block; font-size:36px; margin-bottom:12px; filter:hue-rotate(-10deg); }
+  header.site h1 { font-family:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+    font-weight:500; font-size:clamp(40px,6vw,64px); letter-spacing:-.01em;
+    margin:0 0 8px; color:var(--green); }
+  header.site .subtitle { font-family:"Cormorant Garamond",Georgia,serif;
+    font-style:italic; font-size:clamp(18px,2.2vw,24px); color:var(--ink-soft); margin:0 0 16px; }
+  header.site .intro { max-width:640px; margin:0 auto; color:var(--ink-soft); font-size:15px; }
+  .controls { display:flex; flex-wrap:wrap; gap:12px; align-items:center;
+    margin-bottom:24px; padding:16px; background:var(--paper);
+    border:1px solid var(--rule); border-radius:var(--radius); box-shadow:var(--shadow); }
+  .controls input[type=search] { flex:1 1 220px; min-width:220px; padding:10px 14px;
+    border:1px solid var(--rule); border-radius:999px; background:#fff;
+    font-size:15px; font-family:inherit; color:var(--ink); }
+  .controls input[type=search]:focus { outline:2px solid var(--green-soft); outline-offset:1px; }
+  .filter-group { display:flex; flex-wrap:wrap; gap:6px; }
+  .filter-group .label { font-size:12px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-soft); align-self:center; margin-right:4px; }
+  .chip { padding:6px 12px; border:1px solid var(--rule); background:#fff;
+    border-radius:999px; font-size:13px; color:var(--ink); cursor:pointer;
+    transition:all .15s; font-family:inherit; }
+  .chip:hover { background:var(--green-pale); }
+  .chip.active { background:var(--green); color:#fff; border-color:var(--green); }
+  .stats { margin-bottom:20px; font-size:14px; color:var(--ink-soft); padding-left:4px; }
+  .stats strong { color:var(--green); font-weight:600; }
+  .totals { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;
+    padding:14px 16px; background:var(--paper); border:1px solid var(--rule);
+    border-radius:var(--radius); box-shadow:var(--shadow); align-items:center; }
+  .totals .total-main { font-family:"Cormorant Garamond",Georgia,serif; font-size:22px;
+    color:var(--green); font-weight:500; padding-right:14px;
+    border-right:1px solid var(--rule); margin-right:4px; }
+  .totals .total-main strong { font-size:26px; }
+  .totals .typ-chip { padding:6px 12px; border-radius:999px; border:1px solid var(--rule);
+    background:#fff; font-size:13px; color:var(--ink); cursor:pointer;
+    display:inline-flex; align-items:center; gap:6px; font-family:inherit;
+    transition:all .15s; }
+  .totals .typ-chip:hover { background:var(--green-pale); }
+  .totals .typ-chip.active { background:var(--green); color:#fff; border-color:var(--green); }
+  .totals .typ-chip .icon { font-size:14px; }
+  .totals .typ-chip .num { font-weight:600; opacity:.85; }
+  .totals .typ-chip.zero { opacity:.4; cursor:default; }
+  .totals .typ-chip.zero:hover { background:#fff; }
+  .start-btn { background:var(--green); color:#fff; border:none; cursor:pointer;
+    font-size:14px; padding:10px 18px; border-radius:999px; font-family:inherit;
+    font-weight:500; letter-spacing:.01em; transition:background .15s, transform .1s;
+    box-shadow:0 1px 3px rgba(0,0,0,.1); }
+  .start-btn:hover { background:#3a5530; }
+  .start-btn:active { transform:scale(.97); }
+  .start-btn .icon { display:inline-block; margin-right:6px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:20px; }
+  .card { background:var(--paper); border:1px solid var(--rule); border-radius:var(--radius);
+    overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column;
+    transition:transform .15s, box-shadow .15s; }
+  .card:hover { transform:translateY(-2px); box-shadow:0 4px 8px rgba(0,0,0,.06), 0 12px 32px rgba(0,0,0,.08); }
+  .card .image { width:100%; aspect-ratio:4/3;
+    background:linear-gradient(135deg, var(--green-pale), #d8e2cc);
+    position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+  .card .image img { width:100%; height:100%; object-fit:cover; display:block; }
+  .card .image .placeholder { font-size:64px; opacity:.55; filter:saturate(.8); }
+  .card .image .credit { position:absolute; bottom:4px; right:6px; font-size:10px;
+    color:#fff; background:rgba(0,0,0,.45); padding:2px 6px; border-radius:4px; text-decoration:none; }
+  .card .image .credit.local { background:rgba(74,107,58,.7); }
+  .card .body { padding:18px 18px 20px; flex:1; display:flex; flex-direction:column; }
+  .card h2 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+    font-size:26px; margin:0 0 2px; color:var(--green); letter-spacing:-.005em; }
+  .card .wiss { font-style:italic; color:var(--ink-soft); font-size:14px; margin-bottom:10px; }
+  .card .meta { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+  .badge { font-size:11px; padding:3px 8px; border-radius:4px; background:var(--green-pale);
+    color:var(--green); font-weight:500; letter-spacing:.02em; }
+  .badge.warn { background:#f8e6d8; color:var(--accent); }
+  .badge.fam { background:#eee9dc; color:var(--ink-soft); font-style:italic; }
+  .card table { border-collapse:collapse; width:100%; margin-bottom:14px; font-size:13.5px; }
+  .card table td { padding:5px 0; border-bottom:1px dotted var(--rule); vertical-align:top; }
+  .card table td:first-child { color:var(--ink-soft); width:38%; padding-right:8px; }
+  .card table tr:last-child td { border-bottom:none; }
+  .card .desc { font-size:14px; color:var(--ink); margin:0 0 10px; }
+  .card .care { font-size:13.5px; color:var(--ink-soft); padding:10px 12px;
+    background:var(--green-pale); border-left:3px solid var(--green-soft);
+    border-radius:0 6px 6px 0; margin-bottom:12px; }
+  .card .care strong { color:var(--green); }
+  .card .links { margin-top:auto; display:flex; flex-wrap:wrap; gap:8px 16px;
+    padding-top:10px; border-top:1px solid var(--rule); }
+  .card .links a { color:var(--green); text-decoration:none; font-size:13px;
+    border-bottom:1px solid var(--green-soft); }
+  .card .links a:hover { color:var(--accent); border-color:var(--accent); }
+  .empty { text-align:center; padding:80px 20px; color:var(--ink-soft); font-style:italic; }
+  footer.site { margin-top:80px; padding-top:24px; border-top:1px solid var(--rule);
+    text-align:center; color:var(--ink-soft); font-size:13px; }
+  footer.site a { color:var(--green); }
+  @media (max-width:600px) {
+    .wrap { padding:24px 12px 60px; }
+    .grid { grid-template-columns:1fr; gap:16px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="site">
+  <div class="leaf">🌿</div>
+  <h1>Balkonien</h1>
+  <p class="subtitle">Das Lexikon meiner Balkon-Pflanzen</p>
+  <p class="intro">Eine wachsende Sammlung der Pflanzen, die ich auf meinem Berliner Balkon zu Gast habe oder hatte. Mit Steckbrief, Pflegehinweisen und einem Bild von Wikipedia. Alphabetisch geordnet, durchsuchbar und filterbar.</p>
+</header>
+
+<div class="controls">
+  <button class="start-btn" id="start" title="Zurück zur Startansicht — Suche und Filter leeren"><span class="icon">↺</span>Start</button>
+  <input type="search" id="search" placeholder="Pflanze suchen (Name, Familie, Herkunft …)">
+  <div class="filter-group" data-group="lebensdauer">
+    <span class="label">Dauer:</span>
+    <button class="chip" data-filter="einjährig">einjährig</button>
+    <button class="chip" data-filter="zweijährig">zweijährig</button>
+    <button class="chip" data-filter="mehrjährig">mehrjährig</button>
+  </div>
+  <div class="filter-group" data-group="sonne">
+    <span class="label">Sonne:</span>
+    <button class="chip" data-filter="vollsonnig">☀️ voll</button>
+    <button class="chip" data-filter="sonnig">🌤️ sonnig</button>
+    <button class="chip" data-filter="halbschattig">⛅ halb</button>
+  </div>
+  <div class="filter-group" data-group="badge">
+    <span class="label">Merkmal:</span>
+    <button class="chip" data-filter="bienenfreundlich">🐝 Bienen</button>
+    <button class="chip" data-filter="essbar">🍴 essbar</button>
+    <button class="chip" data-filter="giftig">⚠️ giftig</button>
+  </div>
+</div>
+
+<div class="stats">
+  <span id="count">Lade …</span>
+</div>
+
+<div class="totals" id="totals"></div>
+
+<main id="grid" class="grid"></main>
+
+<footer class="site">
+  Balkonien · Lexikon v9 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
+</footer>
+
+</div>
+
+<script id="plants-data" type="application/json">[
+  {
+    "id": "buchweizen",
+    "name": "Buchweizen",
+    "wiss": "Fagopyrum esculentum",
+    "familie": "Knöterichgewächse (Polygonaceae)",
+    "wikiTitle": "Echter_Buchweizen",
+    "emoji": "🌾",
+    "herkunft": "Zentral- und Ostasien",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–60 cm",
+    "bluete": "Juni–September (weiß-rosa)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Direktsaat Mai–Juni",
+    "desc": "Pseudogetreide aus der Familie der Knöterichgewächse. Schnell wachsend, übernimmt freie Flächen rasch und verdrängt Unkräuter.",
+    "care": "Pflegeleicht. Liebt nährstoffarmen, durchlässigen Boden — keinesfalls düngen. Nach der Blüte abschneiden oder als Gründüngung in den Topf einarbeiten.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Gründüngung"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Echter_Buchweizen"
+      },
+      {
+        "label": "NABU-Steckbrief",
+        "url": "https://www.nabu.de/tiere-und-pflanzen/aktionen-und-projekte/insektensommer/insektenwissen/27598.html"
+      }
+    ],
+    "typ": "Nutzpflanze"
+  },
+  {
+    "id": "clematis",
+    "name": "Clematis (Waldrebe)",
+    "wiss": "Clematis spp.",
+    "familie": "Hahnenfußgewächse (Ranunculaceae)",
+    "wikiTitle": "Waldreben",
+    "emoji": "💜",
+    "herkunft": "Gemäßigte Zonen weltweit",
+    "lebensdauer": "mehrjährig (Kletterpflanze)",
+    "hoehe": "bis 4 m",
+    "bluete": "Mai–September, je nach Sorte",
+    "sonne": "sonnig (Fuß im Schatten)",
+    "wasser": "mäßig–hoch",
+    "pflanzzeit": "Frühjahr oder Herbst",
+    "desc": "„Königin der Kletterpflanzen”. Über 300 Arten von der zarten Bergclematis bis zur großblütigen Hybride. Braucht Rankhilfe.",
+    "care": "Goldene Regel: Kopf in der Sonne, Fuß im Schatten — Wurzelbereich mit Steinen oder flachen Stauden beschatten. Rückschnitt sortenabhängig (drei Schnittgruppen).",
+    "badges": [
+      "bienenfreundlich"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Waldreben"
+      },
+      {
+        "label": "Pflegetipps (NDR)",
+        "url": "https://www.ndr.de/ratgeber/garten/Clematis-richtig-pflanzen-und-pflegen,clematis120.html"
+      }
+    ],
+    "typ": "Kletterpflanze"
+  },
+  {
+    "id": "diamantgras",
+    "name": "Diamantgras",
+    "wiss": "Calamagrostis brachytricha (Syn. Achnatherum brachytrichum)",
+    "familie": "Süßgräser (Poaceae)",
+    "wikiTitle": "",
+    "emoji": "💎",
+    "herkunft": "Ostasien (Korea, China, Japan)",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "90–120 cm (Breite ca. 50 cm)",
+    "bluete": "August–November (silbrig-weiße Rispen, später bronzefarben)",
+    "sonne": "halbschattig–sonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "typ": "Gras",
+    "desc": "Strukturgras aus Korea — seinen Namen verdankt es den Wassertropfen, die sich nach Regen oder Tau in den dichten silbrig-weißen Rispen sammeln und in der Sonne wie Diamanten funkeln. Der große Auftritt kommt im Spätsommer und Herbst, das Rispengerüst bleibt bis tief in den Winter attraktiv. Eines der wenigen Gräser, die auch im Halbschatten zuverlässig blühen.",
+    "care": "Anspruchslos und extrem langlebig: bis −26 °C winterhart, kann 10 bis 20 Jahre am gleichen Standort bleiben und sollte nie geteilt werden — er wird mit den Jahren immer schöner. Boden gern sandig-durchlässig, Staunässe vermeiden. Im zeitigen Frühjahr bodennah zurückschneiden oder das alte Laub einfach auszupfen. Schöne Partner: Sedum, Gaura, Herbst-Anemonen, Knöterich, Rosen.",
+    "badges": [
+      "winterhart",
+      "winterstruktur",
+      "schattenverträglich",
+      "langlebig",
+      "Vasenschnitt"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (EN)",
+        "url": "https://en.wikipedia.org/wiki/Calamagrostis_brachytricha"
+      },
+      {
+        "label": "NaturaDB",
+        "url": "https://www.naturadb.de/pflanzen/calamagrostis-brachytricha/"
+      },
+      {
+        "label": "PflanzenReich",
+        "url": "https://www.pflanzenreich.com/enzyklopaedie/calamagrostis-arundinacea-var-brachytricha/"
+      },
+      {
+        "label": "Master-Stauden",
+        "url": "https://www.master-stauden.de/sortiment/1513-calamagrostis-brachytricha"
+      }
+    ],
+    "localImage": "Bilder/Diamantgras.png",
+    "photoCredit": "Foto: Klaus"
+  },
+  {
+    "id": "dreifarbige-winde",
+    "name": "Dreifarbige Winde",
+    "wiss": "Convolvulus tricolor",
+    "familie": "Windengewächse (Convolvulaceae)",
+    "wikiTitle": "Dreifarbige_Winde",
+    "emoji": "🌀",
+    "herkunft": "Makaronesien, Mittelmeerraum bis Mauretanien",
+    "lebensdauer": "einjährig",
+    "hoehe": "20–40 cm",
+    "bluete": "Juni–September (blau-weiß-gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Direktsaat April–Mai",
+    "desc": "Niedrig wachsende Verwandte der Ackerwinde — aber nicht wuchernd! Trichterblüten öffnen morgens und schließen abends. Drei Farbringe gaben ihr den Namen.",
+    "care": "Sonniger, durchlässiger Standort. Nicht zu nährstoffreich. Verblühtes regelmäßig entfernen verlängert die Blüte.",
+    "badges": [
+      "bienenfreundlich"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Dreifarbige_Winde"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "flaschenbuerstengras",
+    "name": "Flaschenbürstengras",
+    "wiss": "Pennisetum alopecuroides",
+    "familie": "Süßgräser (Poaceae)",
+    "wikiTitle": "Lampenputzergras",
+    "emoji": "🌾",
+    "herkunft": "Ostasien, Australien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "30–90 cm",
+    "bluete": "August–Oktober (rosabraune flaschenbürstenartige Ähren)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "desc": "Auch „Lampenputzergras” genannt. Die kuscheligen, langen Ährenrispen sind das Markenzeichen. Strukturpflanze mit schönem Herbst- und Wintergerüst.",
+    "care": "Erst im Frühjahr (März) zurückschneiden — die alten Halme sind Winterschutz und Wintergrafik zugleich. Durchlässige Erde, in Berlin sicherheitshalber etwas einpacken.",
+    "badges": [
+      "winterstruktur"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Lampenputzergras"
+      }
+    ],
+    "typ": "Gras"
+  },
+  {
+    "id": "garten-reitgras",
+    "name": "Garten-Reitgras",
+    "wiss": "Calamagrostis × acutiflora 'Karl Foerster'",
+    "familie": "Süßgräser (Poaceae)",
+    "wikiTitle": "Reitgräser",
+    "emoji": "🌾",
+    "herkunft": "Europäische Hybride (Bornimer Auslese)",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "120–160 cm",
+    "bluete": "Juni–September (zunächst rosabraun, später strohgelb)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung März–Mai",
+    "desc": "Säulenförmig aufrecht wachsende Strukturstaude, benannt nach dem Bornimer Staudengärtner Karl Foerster. Bleibt auch im Winter aufrecht stehen.",
+    "care": "Anspruchslos und winterhart. Rückschnitt im zeitigen Frühjahr auf 10 cm. Durchlässiger Boden, kommt mit Trockenheit gut zurecht.",
+    "badges": [
+      "winterstruktur",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Calamagrostis_%C3%97_acutiflora"
+      }
+    ],
+    "typ": "Gras"
+  },
+  {
+    "id": "gemeine-hundspetersilie",
+    "name": "Gemeine Hundspetersilie",
+    "wiss": "Aethusa cynapium",
+    "familie": "Doldenblütler (Apiaceae)",
+    "wikiTitle": "Hundspetersilie",
+    "emoji": "⚠️",
+    "herkunft": "Europa",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–80 cm",
+    "bluete": "Juli–September (weiße Dolden)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat März–April",
+    "desc": "Auch „Gartenschierling” genannt. Sieht aus wie Petersilie, ist aber giftig — Verwechslung ist gefährlich. Findet sich oft als „blinder Passagier” in Pflanzentöpfen.",
+    "care": "Wächst von selbst, wo sie gebraucht oder geduldet wird. ACHTUNG: Nicht mit Petersilie verwechseln! Die Blätter riechen beim Zerreiben unangenehm — Petersilie duftet würzig.",
+    "badges": [
+      "giftig",
+      "Wildkraut"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gartenschierling"
+      }
+    ],
+    "typ": "Wildkraut"
+  },
+  {
+    "id": "natternkopf",
+    "name": "Gewöhnlicher Natternkopf",
+    "wiss": "Echium vulgare",
+    "familie": "Raublattgewächse (Boraginaceae)",
+    "wikiTitle": "Gewöhnlicher_Natternkopf",
+    "emoji": "🐝",
+    "herkunft": "Europa, Westasien",
+    "lebensdauer": "zweijährig",
+    "hoehe": "30–100 cm",
+    "bluete": "Mai–Oktober (blau, gelegentlich weiß)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat April",
+    "desc": "Einer der besten Bienen- und Wildbienenweiden überhaupt — Hummeln und Solitärbienen lieben ihn. Form der Blüte erinnert an einen Schlangenkopf mit herausgestreckten Staubblättern (daher der Name). Selten kommt eine weißblütige Form vor.",
+    "care": "Trockenkünstler. Mageren, kalkhaltigen, durchlässigen Boden bevorzugen. Sät sich selbst aus. Bildet im ersten Jahr eine Blattrosette, blüht im zweiten Jahr — danach verabschiedet er sich.",
+    "badges": [
+      "bienenfreundlich",
+      "Wildbienen",
+      "Trockenheit"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gew%C3%B6hnlicher_Natternkopf"
+      },
+      {
+        "label": "Wildbienen-Steckbrief",
+        "url": "https://www.wildbiene.com/blog/natternkopf-echium-vulgare/"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "gilbweiderich",
+    "name": "Gilbweiderich",
+    "wiss": "Lysimachia vulgaris",
+    "familie": "Primelgewächse (Primulaceae)",
+    "wikiTitle": "Gewöhnlicher_Gilbweiderich",
+    "emoji": "💛",
+    "herkunft": "Eurasien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "60–150 cm",
+    "bluete": "Juni–August (leuchtend gelb)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "hoch",
+    "pflanzzeit": "Pflanzung Frühjahr oder Herbst",
+    "desc": "Wildstaude feuchter Wiesen und Ufer. Im Topf braucht er konstante Feuchte. Bildet Ausläufer — gerne in einen begrenzten Topf setzen.",
+    "care": "Feucht halten, niemals austrocknen lassen. Bei Ausbreitungsdrang regelmäßig teilen. Komplett winterhart.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gew%C3%B6hnlicher_Gilbweiderich"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "hibiskus",
+    "name": "Hibiskus (Garten-Eibisch)",
+    "wiss": "Hibiscus syriacus",
+    "familie": "Malvengewächse (Malvaceae)",
+    "wikiTitle": "Hibiscus_syriacus",
+    "emoji": "🌺",
+    "herkunft": "Ost- und Südasien",
+    "lebensdauer": "mehrjährig (Strauch)",
+    "hoehe": "2–3 m",
+    "bluete": "Juli–September (rosa, lila, weiß, blau)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "desc": "Winterharter Hibiskus für unsere Breiten. Treibt spät aus — keine Panik, wenn er im Mai noch kahl steht. Große trompetenförmige Blüten, jede einzelne hält nur einen Tag.",
+    "care": "Pflegeleicht. Im Frühjahr leicht zurückschneiden für üppige Blüte. Liebt durchlässigen, nährstoffreichen Boden. Im Topf gut wässern, ohne Staunässe.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Garten-Eibisch"
+      }
+    ],
+    "typ": "Strauch"
+  },
+  {
+    "id": "himmelsroeschen",
+    "name": "Himmelsröschen",
+    "wiss": "Silene coeli-rosa (Viscaria oculata)",
+    "familie": "Nelkengewächse (Caryophyllaceae)",
+    "wikiTitle": "Himmelsröschen",
+    "emoji": "🌸",
+    "herkunft": "Mittelmeerraum",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–50 cm",
+    "bluete": "Juni–September (rosa, lila, weiß, oft mit Auge)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat April",
+    "desc": "Zarte Sommerblume mit himmelweit geöffneten Blüten und kontrastierendem Auge in der Mitte. Klassiker des Bauerngartens.",
+    "care": "Sonniger, durchlässiger Standort. Direktsaat ins Beet oder den Topf. Bei guter Pflege durchblühend bis zum Frost.",
+    "badges": [
+      "bienenfreundlich"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Himmelsr%C3%B6schen"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "hornklee",
+    "name": "Hornklee",
+    "wiss": "Lotus corniculatus",
+    "familie": "Hülsenfrüchtler (Fabaceae)",
+    "wikiTitle": "Gewöhnlicher_Hornklee",
+    "emoji": "🌿",
+    "herkunft": "Eurasien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "10–30 cm",
+    "bluete": "Mai–September (gelb-orange)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat Frühjahr",
+    "desc": "Heimische Wildstaude, kommt mit kargen Standorten zurecht. Wichtige Futterpflanze für Bläulinge und andere Schmetterlingsraupen. Reichert wie alle Hülsenfrüchtler den Boden mit Stickstoff an.",
+    "care": "Sehr genügsam. Mageren, durchlässigen Boden bevorzugen. Praktisch wartungsfrei, winterhart.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlingsraupen",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gew%C3%B6hnlicher_Hornklee"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "island-mohn",
+    "name": "Island-Mohn",
+    "wiss": "Papaver nudicaule",
+    "familie": "Mohngewächse (Papaveraceae)",
+    "wikiTitle": "Islandmohn",
+    "emoji": "🌺",
+    "herkunft": "Arktis und Subarktis (Nordamerika, Sibirien)",
+    "lebensdauer": "kurzlebige Staude (oft als zwei- oder einjährig kultiviert)",
+    "hoehe": "20–50 cm",
+    "bluete": "Mai–August (gelb, orange, rot, weiß, lachs)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat Frühjahr oder Herbst",
+    "desc": "Zarte Mohnart aus Arktis und Subarktis. Die feinen, seidigen Blüten in leuchtenden Gelb-, Orange- und Rottönen sitzen auf langen, behaarten Stielen und tanzen bei jeder Brise wie schwebende Schmetterlinge. Liebt kühles Wetter — in heißen Sommern kurzlebig, dafür sät er sich willig aus.",
+    "care": "Vollsonnig und durchlässig, mag aber keine Sommerhitze — im Frühjahr und Herbst zeigt er sich am schönsten. Direktsaat funktioniert am besten, Wurzeln lassen sich kaum verpflanzen. Verblühtes regelmäßig ausschneiden verlängert die Blüte. Sät sich von selbst aus, wenn man Samenkapseln stehen lässt.",
+    "badges": [
+      "bienenfreundlich",
+      "Selbstaussaat",
+      "Schnittblume"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Islandmohn"
+      }
+    ],
+    "typ": "Blume",
+    "localImage": "Bilder/island-mohn-m078667_w_7.webp",
+    "photoCredit": "Foto: Klaus"
+  },
+  {
+    "id": "knoeterich",
+    "name": "Knöterich",
+    "wiss": "Persicaria affinis (u. a.)",
+    "familie": "Knöterichgewächse (Polygonaceae)",
+    "wikiTitle": "Persicaria_affinis",
+    "emoji": "🌸",
+    "herkunft": "Himalaya",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "15–25 cm",
+    "bluete": "Juni–Oktober (rosa, später dunkelrot)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "desc": "Niedriger, polsterbildender Bodendecker (nicht zu verwechseln mit dem invasiven Japanischen Staudenknöterich!). Walzenförmige Blütenähren über glänzenden Blättern. Lange Blütezeit.",
+    "care": "Sehr pflegeleicht. Winterhart. Bei Bedarf im Frühjahr zurückschneiden. Gut für Topf-Vordergrund.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (Persicaria)",
+        "url": "https://de.wikipedia.org/wiki/Kn%C3%B6teriche"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "kornblume",
+    "name": "Kornblume",
+    "wiss": "Centaurea cyanus",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Kornblume",
+    "emoji": "🔵",
+    "herkunft": "Eurasien",
+    "lebensdauer": "einjährig",
+    "hoehe": "40–100 cm",
+    "bluete": "Juni–September (leuchtend kornblumenblau)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat März–April oder Herbst",
+    "desc": "Einst häufige Begleiterin von Getreidefeldern, durch Herbizide selten geworden. Symbolpflanze für den Naturschutz. Die Blütenblätter sind essbar und werden gern in Salate gestreut.",
+    "care": "Direktsaat — verträgt das Verpflanzen schlecht. Magerer, durchlässiger Boden. Kein Dünger. Sät sich bei Gefallen selbst aus.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Kornblume"
+      },
+      {
+        "label": "NABU",
+        "url": "https://www.nabu.de/tiere-und-pflanzen/pflanzen/wildpflanzen/14587.html"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "kornrade",
+    "name": "Kornrade",
+    "wiss": "Agrostemma githago",
+    "familie": "Nelkengewächse (Caryophyllaceae)",
+    "wikiTitle": "Kornrade",
+    "emoji": "🌺",
+    "herkunft": "Östliches Mittelmeer, mit Getreide nach Mitteleuropa eingebürgert",
+    "lebensdauer": "einjährig",
+    "hoehe": "60–100 cm",
+    "bluete": "Juni–August (purpurrosa)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat April oder Herbst",
+    "desc": "Früher allgegenwärtiges Ackerunkraut, heute auf der Roten Liste. Schlanke, hochaufgeschossene Pflanze mit großen rosa Blüten. ACHTUNG: Die Samen sind giftig (Saponine).",
+    "care": "Direktsaat in den Topf oder ins Beet. Verträgt Trockenheit. Selbstaussaat möglich. Reife Samenkapseln nicht mit Kindern oder Tieren in Kontakt bringen.",
+    "badges": [
+      "bienenfreundlich",
+      "giftig",
+      "Rote Liste"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Kornrade"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "lein",
+    "name": "Lein",
+    "wiss": "Linum usitatissimum / L. perenne",
+    "familie": "Leingewächse (Linaceae)",
+    "wikiTitle": "Saat-Lein",
+    "emoji": "💙",
+    "herkunft": "Eurasien",
+    "lebensdauer": "einjährig (Saat-Lein) / mehrjährig (Stauden-Lein)",
+    "hoehe": "30–80 cm",
+    "bluete": "Juni–August (himmelblau)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat April",
+    "desc": "Eine der ältesten Kulturpflanzen Europas — Faser- und Ölpflanze in einem. Die Blüten öffnen sich nur am Vormittag und fallen am gleichen Tag wieder ab. Wer sehen will, muss früh aufstehen.",
+    "care": "Direktsaat, durchlässiger, eher magerer Boden. Stauden-Lein (Linum perenne) blüht jedes Jahr neu auf — eine Empfehlung für den Topf.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (Saat-Lein)",
+        "url": "https://de.wikipedia.org/wiki/Saat-Lein"
+      }
+    ],
+    "typ": "Nutzpflanze"
+  },
+  {
+    "id": "duftnessel",
+    "name": "Limonen-Duftnessel",
+    "wiss": "Agastache mexicana",
+    "familie": "Lippenblütler (Lamiaceae)",
+    "wikiTitle": "Duftnesseln",
+    "emoji": "🍃",
+    "herkunft": "Mexiko",
+    "lebensdauer": "mehrjährig (bei uns oft einjährig kultiviert)",
+    "hoehe": "60–90 cm",
+    "bluete": "Juli–Oktober (rosa, lila, weiß)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Mai",
+    "desc": "Duftet intensiv nach Zitrone, wenn man die Blätter zerreibt. Magnet für Bienen, Hummeln und Schmetterlinge.",
+    "care": "Liebt warme, durchlässige Standorte. In Berlin nur bedingt winterhart — im Topf besser frostfrei überwintern oder neu aussäen. Blätter und Blüten für Tee.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "duftend"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Duftnesseln"
+      }
+    ],
+    "typ": "Kraut"
+  },
+  {
+    "id": "malve",
+    "name": "Malve",
+    "wiss": "Malva sylvestris / moschata / alcea",
+    "familie": "Malvengewächse (Malvaceae)",
+    "wikiTitle": "Malven",
+    "emoji": "💜",
+    "herkunft": "Eurasien, Nordafrika",
+    "lebensdauer": "mehrjährig (oft 2–3 Jahre)",
+    "hoehe": "50–150 cm",
+    "bluete": "Juni–September (rosa-violett)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat Frühjahr oder Herbst",
+    "desc": "Uralte Heil- und Nutzpflanze — Blätter und Blüten essbar, schleimstoffhaltig (Hustentee). Die Wilde Malve sät sich selbst aus und taucht jedes Jahr wieder auf.",
+    "care": "Anspruchslos. Sonniger, durchlässiger Standort. Anfällig für Malvenrost — befallene Blätter entfernen, nicht überkopf gießen.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Heilpflanze"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Malven"
+      }
+    ],
+    "typ": "Kraut"
+  },
+  {
+    "id": "maedchenauge",
+    "name": "Mädchenauge",
+    "wiss": "Coreopsis grandiflora / lanceolata",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Mädchenaugen",
+    "emoji": "💛",
+    "herkunft": "Nordamerika (Prärie)",
+    "lebensdauer": "mehrjährig (oft kurzlebige Staude)",
+    "hoehe": "40–70 cm",
+    "bluete": "Juni–September (leuchtend gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung April–Mai",
+    "desc": "Dauerblüher der nordamerikanischen Prärien. Übersät sich von Juni bis in den Herbst mit gelben Blüten. Lockt Schmetterlinge und Hummeln an.",
+    "care": "Liebt Sonne und durchlässigen Boden. Verblühtes regelmäßig abschneiden verlängert die Blüte massiv. Im Topf bedingt winterhart — Schutz hilft.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlinge"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/M%C3%A4dchenaugen"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "ringelblume",
+    "name": "Ringelblume",
+    "wiss": "Calendula officinalis",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Ringelblume",
+    "emoji": "🧡",
+    "herkunft": "Mittelmeerraum",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–60 cm",
+    "bluete": "Juni–Oktober (orange, gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat März–April",
+    "desc": "Klassische Bauerngartenpflanze und eine der wichtigsten Heilpflanzen Europas (Calendula-Salbe). Die Blüten sind essbar und färben Kräuterquark und Salate goldgelb.",
+    "care": "Direktsaat ist am einfachsten. Sät sich anschließend selbst aus — Ringelblumen-Nachwuchs ist garantiert. Verblühtes regelmäßig pflücken verlängert die Blüte.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Heilpflanze"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Ringelblume"
+      }
+    ],
+    "typ": "Kraut"
+  },
+  {
+    "id": "schachtelhalm",
+    "name": "Schachtelhalm",
+    "wiss": "Equisetum spp.",
+    "familie": "Schachtelhalmgewächse (Equisetaceae)",
+    "wikiTitle": "Schachtelhalme",
+    "emoji": "🎋",
+    "herkunft": "Weltweit",
+    "lebensdauer": "mehrjährig",
+    "hoehe": "20–80 cm (Ackerschachtelhalm: bis 50 cm)",
+    "bluete": "blütenlos — Sporenpflanze",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "hoch",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "desc": "Lebende Fossilien — die Vorfahren bildeten in der Karbonzeit ganze Wälder. Wurzeln tief und treiben hartnäckig aus, deshalb im Garten gefürchtet, im Topf aber gut zu halten. Liefert biodynamisches Pflanzenstärkungsmittel (Schachtelhalmbrühe gegen Pilzbefall).",
+    "care": "Unbedingt in einem Topf halten — niemals direkt in den Garten oder ein nicht abgegrenztes Hochbeet pflanzen! Liebt Feuchte. Mit den Trieben einen Sud kochen und die anderen Pflanzen damit spritzen.",
+    "badges": [
+      "winterhart",
+      "Heilpflanze"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Schachtelhalme"
+      }
+    ],
+    "typ": "Wildkraut"
+  },
+  {
+    "id": "schwarzkuemmel",
+    "name": "Schwarzkümmel / Jungfer im Grünen",
+    "wiss": "Nigella sativa / N. damascena",
+    "familie": "Hahnenfußgewächse (Ranunculaceae)",
+    "wikiTitle": "Echter_Schwarzkümmel",
+    "emoji": "💙",
+    "herkunft": "Vorderasien, Mittelmeerraum",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–60 cm",
+    "bluete": "Juni–August (blau, weiß, rosa)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat April",
+    "desc": "Zwei Verwandte: Nigella sativa (Echter Schwarzkümmel) liefert das bekannte Gewürz; Nigella damascena („Jungfer im Grünen”) ist die filigrane Zierform mit Blüten zwischen federfein zerteiltem Blattwerk. Beide haben spektakuläre Samenkapseln, die wie kleine Laternen aussehen.",
+    "care": "Direktsaat. Pflegeleicht. Sät sich gern selbst aus. Samenkapseln als Trockenblumenschmuck verwenden.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (Echter Schwarzkümmel)",
+        "url": "https://de.wikipedia.org/wiki/Echter_Schwarzk%C3%BCmmel"
+      },
+      {
+        "label": "Jungfer im Grünen",
+        "url": "https://de.wikipedia.org/wiki/Jungfer_im_Gr%C3%BCnen"
+      }
+    ],
+    "typ": "Kraut"
+  },
+  {
+    "id": "sonnenblume",
+    "name": "Sonnenblume",
+    "wiss": "Helianthus annuus",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Sonnenblume",
+    "emoji": "🌻",
+    "herkunft": "Nordamerika",
+    "lebensdauer": "einjährig",
+    "hoehe": "1–3 m",
+    "bluete": "Juli–Oktober (gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "hoch",
+    "pflanzzeit": "Direktsaat April–Mai",
+    "desc": "Der Klassiker. Junge Pflanzen folgen mit der Knospe dem Sonnenlauf (Heliotropismus); die ausgewachsene Blüte zeigt fest nach Osten. Vogel- und Insektenmagnet, Samen sind nahrhaft.",
+    "care": "Tiefe Töpfe wählen, regelmäßig wässern, gelegentlich düngen. Hohe Sorten bei Wind anbinden. Nach der Blüte die Köpfe stehen lassen — Meisen und Finken sind dankbar.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Vögel"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gemeine_Sonnenblume"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "spinnenblume",
+    "name": "Spinnenblume",
+    "wiss": "Tarenaya hassleriana (Cleome)",
+    "familie": "Kapernsträucher (Cleomaceae)",
+    "wikiTitle": "Tarenaya_hassleriana",
+    "emoji": "🕷️",
+    "herkunft": "Südamerika",
+    "lebensdauer": "einjährig",
+    "hoehe": "60–120 cm",
+    "bluete": "Juli–Oktober (rosa, weiß, lila)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung nach den Eisheiligen (Mitte Mai)",
+    "desc": "Exotisch wirkende Sommerblume mit großen Blütendolden, aus denen lange Staubgefäße herausragen wie Spinnenbeine. Wächst rasch zu einer stattlichen Pflanze heran.",
+    "care": "Wärmeliebend — erst nach den Eisheiligen ins Freie. Sonnig und gut wässern, aber keine Staunässe. Verträgt keine Berliner Spätfröste.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlinge"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia (Spinnenpflanzen)",
+        "url": "https://de.wikipedia.org/wiki/Spinnenpflanzen"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "storchschnabel",
+    "name": "Storchschnabel",
+    "wiss": "Geranium spp.",
+    "familie": "Storchschnabelgewächse (Geraniaceae)",
+    "wikiTitle": "Storchschnäbel",
+    "emoji": "💜",
+    "herkunft": "Weltweit (über 400 Arten)",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "20–80 cm",
+    "bluete": "Mai–September",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Pflanzung Frühjahr oder Herbst",
+    "desc": "Den Namen verdankt er den Samenkapseln, die wie Storchenschnäbel geformt sind. Echte Geranien (nicht zu verwechseln mit den Balkon-„Geranien”, die eigentlich Pelargonien sind!). Sehr ausdauernd und pflegeleicht.",
+    "care": "Praktisch wartungsfrei. Nach der ersten Blüte stark zurückschneiden — viele Arten blühen dann ein zweites Mal. Komplett winterhart.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Storchschn%C3%A4bel"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "strand-levkoje",
+    "name": "Strand-Levkoje",
+    "wiss": "Malcolmia maritima",
+    "familie": "Kreuzblütler (Brassicaceae)",
+    "wikiTitle": "Strand-Levkoje",
+    "emoji": "💗",
+    "herkunft": "Östliches Mittelmeer",
+    "lebensdauer": "einjährig",
+    "hoehe": "15–30 cm",
+    "bluete": "Juni–Oktober (rosa, lila, weiß)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat April (auch noch später möglich)",
+    "desc": "Schnellster Blüher unter den Sommerblumen: vier bis sechs Wochen nach der Aussaat steht sie in voller Blüte. Klein, zart und vielblütig — ideal für die schnelle Beet- oder Topfbegrünung.",
+    "care": "Direktsaat, möglichst gleich an Ort und Stelle. Mehrfach nachsäen verlängert die Blühperiode. Anspruchslos und genügsam.",
+    "badges": [
+      "bienenfreundlich",
+      "schnell"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Strand-Levkoje"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "strand-silberkraut",
+    "name": "Strand-Silberkraut (Duftsteinrich)",
+    "wiss": "Lobularia maritima",
+    "familie": "Kreuzblütler (Brassicaceae)",
+    "wikiTitle": "Strand-Silberkraut",
+    "emoji": "🤍",
+    "herkunft": "Mittelmeerraum, Kanaren",
+    "lebensdauer": "einjährig (in mildem Klima mehrjährig)",
+    "hoehe": "10–30 cm",
+    "bluete": "Mai–Oktober (weiß, rosa, lila)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat März–April",
+    "desc": "Auch „Duftsteinrich” oder „Strandkresse” genannt. Honigsüßer Duft, der Bienen und Schwebfliegen massenhaft anlockt. Niedriger, dichter Bodendecker oder Polster für Trog- und Kübelränder.",
+    "care": "Sehr trockenheitsverträglich. Bei nachlassender Blüte mit der Schere zurückschneiden — treibt rasch neu durch. Sät sich selbst aus.",
+    "badges": [
+      "bienenfreundlich",
+      "duftend",
+      "Trockenheit"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Strand-Silberkraut"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "wald-schaumkraut",
+    "name": "Wald-Schaumkraut",
+    "wiss": "Cardamine flexuosa",
+    "familie": "Kreuzblütler (Brassicaceae)",
+    "wikiTitle": "Wald-Schaumkraut",
+    "emoji": "🤍",
+    "herkunft": "Europa, weite Teile Asiens",
+    "lebensdauer": "einjährig bis zweijährig",
+    "hoehe": "10–50 cm",
+    "bluete": "April–September (kleine weiße Blüten in Trauben)",
+    "sonne": "halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Selbstaussaat — meist als ungebetener Gast in Pflanzentöpfen",
+    "desc": "Kleine, unscheinbare Verwandte des bekannteren Wiesen-Schaumkrauts. Wirkt wie ein Wildkraut, ist aber essbar — die jungen Blätter schmecken angenehm kresseartig scharf. Reife Samenschoten schleudern beim Berühren ihre Samen meterweit weg, eine kleine Naturbeobachtung wert.",
+    "care": "Pflegeleicht bis aufdringlich. Mag feuchte, halbschattige Standorte. Wenn er sich nicht zu sehr ausbreiten soll, vor der Samenreife schneiden — sonst übernimmt er gerne den Topf. Junge Blätter in Salat oder Kräuterquark verwenden.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Selbstaussaat",
+      "Wildkraut"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Wald-Schaumkraut"
+      }
+    ],
+    "typ": "Wildkraut"
+  },
+  {
+    "id": "weisser-steinklee",
+    "name": "Weißer Steinklee",
+    "wiss": "Melilotus albus",
+    "familie": "Hülsenfrüchtler (Fabaceae)",
+    "wikiTitle": "Weißer_Steinklee",
+    "emoji": "🤍",
+    "herkunft": "Eurasien",
+    "lebensdauer": "zweijährig (selten einjährig)",
+    "hoehe": "50–150 cm",
+    "bluete": "Juni–September (kleine weiße Blüten in langen Trauben)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat April–Mai oder Herbst",
+    "desc": "Hochwüchsige Wildpflanze und einer der wertvollsten Bienenweiden überhaupt — Imker schätzen ihn sehr. Duftet stark nach Cumarin (Heugeruch), besonders beim Trocknen. Wie alle Hülsenfrüchtler reichert er den Boden mit Stickstoff an.",
+    "care": "Anspruchslos. Liebt magere, durchlässige, kalkhaltige Standorte und kommt mit Trockenheit gut zurecht. Sät sich selbst aus — im Topf einfach blühen und Samen reifen lassen. Beim Trocknen auf trockene Lagerung achten: bei Schimmelbefall können toxische Cumarin-Derivate (Dicumarol) entstehen.",
+    "badges": [
+      "bienenfreundlich",
+      "Wildbienen",
+      "Trockenheit",
+      "Heilpflanze",
+      "Selbstaussaat"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Wei%C3%9Fer_Steinklee"
+      },
+      {
+        "label": "NABU-Bienenweiden",
+        "url": "https://www.nabu.de/tiere-und-pflanzen/aktionen-und-projekte/insektensommer/insektenwissen/27598.html"
+      }
+    ],
+    "typ": "Blume"
+  },
+  {
+    "id": "wiesen-pippau",
+    "name": "Wiesen-Pippau",
+    "wiss": "Crepis biennis",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Wiesen-Pippau",
+    "emoji": "💛",
+    "herkunft": "Europa",
+    "lebensdauer": "zweijährig",
+    "hoehe": "30–130 cm",
+    "bluete": "Mai–Juli (leuchtend gelb, löwenzahnähnlich, in lockeren Rispen)",
+    "sonne": "vollsonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat Frühjahr oder Herbst",
+    "desc": "Heimische Wiesenstaude, deren gelbe Blüten an Löwenzahn erinnern — aber statt einer Einzelblüte trägt der Pippau verzweigte Stängel mit vielen kleinen Körbchen. Wichtige Pollen- und Nektarquelle für Wildbienen, Schwebfliegen und Schmetterlinge in einer Zeit, in der das Wiesenangebot oft schon gemäht ist.",
+    "care": "Sehr genügsam. Mag eher kalkhaltige Böden, kommt aber überall durch. Blüht im zweiten Jahr und stirbt dann ab — Samenstände stehen lassen, dann zieht er von selbst nach. Vorsicht beim Topfen: kräftige Pfahlwurzel, lieber gleich tief säen.",
+    "badges": [
+      "bienenfreundlich",
+      "Wildbienen",
+      "Schmetterlinge",
+      "Selbstaussaat"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Wiesen-Pippau"
+      },
+      {
+        "label": "NABU-Wildbienen",
+        "url": "https://www.nabu.de/tiere-und-pflanzen/insekten-und-spinnen/insekten/bienen-und-wespen/index.html"
+      }
+    ],
+    "typ": "Wildkraut"
+  }
+]</script>
+<script>
+const plants = JSON.parse(document.getElementById("plants-data").textContent);
+
+function sonneTags(s) {
+  s = (s || "").toLowerCase();
+  const tags = [];
+  if (s.includes("vollsonnig")) tags.push("vollsonnig","sonnig");
+  else if (s.includes("sonnig")) tags.push("sonnig");
+  if (s.includes("halbschattig")) tags.push("halbschattig");
+  if (s.includes("schattig") && !s.includes("halbschattig")) tags.push("schattig");
+  return tags;
+}
+function lebensdauerTags(l) {
+  l = (l || "").toLowerCase();
+  const tags = [];
+  if (l.includes("einjährig")) tags.push("einjährig");
+  if (l.includes("zweijährig")) tags.push("zweijährig");
+  if (l.includes("mehrjährig") || l.includes("staude") || l.includes("strauch") || l.includes("kletterpflanze")) tags.push("mehrjährig");
+  return tags;
+}
+function badgeMatch(plant, filter) {
+  return (plant.badges || []).some(b => b.toLowerCase().includes(filter.toLowerCase()));
+}
+function sunIcon(s) {
+  s = (s || "").toLowerCase();
+  if (s.includes("vollsonnig")) return "☀️";
+  if (s.includes("halbschattig")) return "⛅";
+  if (s.includes("sonnig")) return "🌤️";
+  return "🌥️";
+}
+function waterIcon(w) {
+  w = (w || "").toLowerCase();
+  if (w.includes("niedrig")) return "💧";
+  if (w.includes("hoch")) return "💧💧💧";
+  return "💧💧";
+}
+
+const grid = document.getElementById("grid");
+const search = document.getElementById("search");
+const countEl = document.getElementById("count");
+const startBtn = document.getElementById("start");
+const totalsEl = document.getElementById("totals");
+const filterButtons = document.querySelectorAll(".chip");
+let activeFilters = { lebensdauer:null, sonne:null, badge:null, typ:null };
+
+const TYP_ICONS = {
+  "Blume": "🌸",
+  "Kraut": "🌿",
+  "Wildkraut": "🌱",
+  "Gras": "🌾",
+  "Nutzpflanze": "🌽",
+  "Strauch": "🌳",
+  "Kletterpflanze": "🍃"
+};
+const TYP_ORDER = ["Blume","Kraut","Wildkraut","Gras","Nutzpflanze","Strauch","Kletterpflanze"];
+
+function renderTotals() {
+  const counts = {};
+  for (const t of TYP_ORDER) counts[t] = 0;
+  for (const p of plants) {
+    if (counts[p.typ] !== undefined) counts[p.typ]++;
+    else counts[p.typ] = 1;
+  }
+  const chips = TYP_ORDER.map(t => {
+    const n = counts[t] || 0;
+    const isActive = activeFilters.typ === t;
+    const zero = n === 0 ? " zero" : "";
+    return `<button class="typ-chip${isActive ? " active" : ""}${zero}" data-typ="${t}"${zero ? " disabled" : ""}>
+      <span class="icon">${TYP_ICONS[t]||"🌱"}</span>${t}<span class="num">${n}</span>
+    </button>`;
+  }).join("");
+  totalsEl.innerHTML = `
+    <span class="total-main"><strong>${plants.length}</strong> Pflanzen</span>
+    ${chips}
+  `;
+  totalsEl.querySelectorAll(".typ-chip").forEach(btn => {
+    if (btn.classList.contains("zero")) return;
+    btn.addEventListener("click", () => {
+      const t = btn.getAttribute("data-typ");
+      activeFilters.typ = (activeFilters.typ === t) ? null : t;
+      render();
+    });
+  });
+}
+
+plants.sort((a,b) => a.name.localeCompare(b.name, "de"));
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function renderCard(p) {
+  const linksHtml = (p.links || []).map(l =>
+    `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`
+  ).join("");
+  const badgesHtml = (p.badges || []).map(b => {
+    const isWarn = /giftig/i.test(b);
+    return `<span class="badge ${isWarn ? "warn" : ""}">${esc(b)}</span>`;
+  }).join("");
+  // Lokales Bild hat Vorrang vor Wikipedia-Auto-Fetch
+  const wikiAttr = p.localImage ? "" : esc(p.wikiTitle);
+  const imageInner = p.localImage
+    ? `<img src="${esc(p.localImage)}" alt="" loading="lazy">${p.photoCredit ? `<span class="credit local">${esc(p.photoCredit)}</span>` : ""}`
+    : `<span class="placeholder">${p.emoji || "🌱"}</span>`;
+  return `
+    <article class="card" data-id="${esc(p.id)}">
+      <div class="image" data-wiki="${wikiAttr}">
+        ${imageInner}
+      </div>
+      <div class="body">
+        <h2>${esc(p.name)}</h2>
+        <div class="wiss">${esc(p.wiss)}</div>
+        <div class="meta">
+          <span class="badge fam">${esc(p.familie)}</span>
+          ${badgesHtml}
+        </div>
+        <table>
+          <tr><td>Herkunft</td><td>${esc(p.herkunft)}</td></tr>
+          <tr><td>Lebensdauer</td><td>${esc(p.lebensdauer)}</td></tr>
+          <tr><td>Wuchshöhe</td><td>${esc(p.hoehe)}</td></tr>
+          <tr><td>Blütezeit</td><td>${esc(p.bluete)}</td></tr>
+          <tr><td>Sonne</td><td>${sunIcon(p.sonne)} ${esc(p.sonne)}</td></tr>
+          <tr><td>Wasser</td><td>${waterIcon(p.wasser)} ${esc(p.wasser)}</td></tr>
+          <tr><td>Pflanzzeit</td><td>${esc(p.pflanzzeit)}</td></tr>
+        </table>
+        <p class="desc">${esc(p.desc)}</p>
+        <div class="care"><strong>Pflege:</strong> ${esc(p.care)}</div>
+        <div class="links">${linksHtml}</div>
+      </div>
+    </article>
+  `;
+}
+
+function matchesFilters(p) {
+  const q = search.value.trim().toLowerCase();
+  if (q) {
+    const hay = [p.name, p.wiss, p.familie, p.herkunft, p.desc].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  if (activeFilters.lebensdauer && !lebensdauerTags(p.lebensdauer).includes(activeFilters.lebensdauer)) return false;
+  if (activeFilters.sonne && !sonneTags(p.sonne).includes(activeFilters.sonne)) return false;
+  if (activeFilters.badge && !badgeMatch(p, activeFilters.badge)) return false;
+  if (activeFilters.typ && p.typ !== activeFilters.typ) return false;
+  return true;
+}
+
+function render() {
+  const filtered = plants.filter(matchesFilters);
+  grid.innerHTML = filtered.length
+    ? filtered.map(renderCard).join("")
+    : `<div class="empty">Keine Pflanze passt zu dieser Filterkombination.</div>`;
+  countEl.innerHTML = filtered.length === plants.length
+    ? `Alle <strong>${plants.length}</strong> Pflanzen sichtbar`
+    : `<strong>${filtered.length}</strong> von ${plants.length} Pflanzen sichtbar`;
+  renderTotals();
+  loadImages();
+}
+
+const imgCache = {};
+async function loadImages() {
+  const imgBoxes = document.querySelectorAll(".image[data-wiki]");
+  for (const box of imgBoxes) {
+    const title = box.getAttribute("data-wiki");
+    if (!title || box.querySelector("img")) continue;
+    if (imgCache[title]) { applyImage(box, imgCache[title], title); continue; }
+    try {
+      const url = `https://de.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`;
+      const r = await fetch(url);
+      if (!r.ok) throw new Error("not ok");
+      const data = await r.json();
+      const thumb = (data.originalimage && data.originalimage.source) || (data.thumbnail && data.thumbnail.source);
+      if (thumb) { imgCache[title] = thumb; applyImage(box, thumb, title); }
+    } catch (e) { /* Placeholder bleibt */ }
+  }
+}
+function applyImage(box, src, title) {
+  if (box.querySelector("img")) return;
+  const img = document.createElement("img");
+  img.src = src; img.alt = ""; img.loading = "lazy";
+  img.onerror = () => img.remove();
+  box.appendChild(img);
+  const credit = document.createElement("a");
+  credit.href = `https://de.wikipedia.org/wiki/${encodeURIComponent(title)}`;
+  credit.target = "_blank"; credit.rel = "noopener";
+  credit.className = "credit"; credit.textContent = "Wikipedia ↗";
+  box.appendChild(credit);
+}
+
+search.addEventListener("input", render);
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const group = btn.parentElement.getAttribute("data-group");
+    const value = btn.getAttribute("data-filter");
+    if (activeFilters[group] === value) {
+      activeFilters[group] = null;
+      btn.classList.remove("active");
+    } else {
+      activeFilters[group] = value;
+      btn.parentElement.querySelectorAll(".chip").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    }
+    render();
+  });
+});
+startBtn.addEventListener("click", () => {
+  search.value = "";
+  activeFilters = { lebensdauer:null, sonne:null, badge:null, typ:null };
+  document.querySelectorAll(".chip.active").forEach(b => b.classList.remove("active"));
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+render();
+</script>
+</body>
+</html>
