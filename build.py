@@ -18,6 +18,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "plants.json"
+SLIDESHOW_DIR = ROOT / "Balkonbilder"
+
+def scan_slideshow() -> list[str]:
+    """Sammelt Bild-Dateinamen aus Balkonbilder/, alphabetisch sortiert (= bei iPhones chronologisch)."""
+    if not SLIDESHOW_DIR.is_dir():
+        return []
+    exts = (".jpg",".jpeg",".png",".webp")
+    return sorted([p.name for p in SLIDESHOW_DIR.iterdir()
+                   if p.suffix.lower() in exts and not p.name.startswith(".")])
 
 REQUIRED = ["id","name","wiss","familie","wikiTitle","emoji",
             "herkunft","lebensdauer","hoehe","bluete","sonne",
@@ -170,6 +179,39 @@ TEMPLATE = r"""<!DOCTYPE html>
     border-bottom:1px solid var(--green-soft); }
   .card .links a:hover { color:var(--accent); border-color:var(--accent); }
   .empty { text-align:center; padding:80px 20px; color:var(--ink-soft); font-style:italic; }
+  /* Slideshow */
+  .slideshow { margin:0 0 36px; padding:0; }
+  .slideshow h2 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+    font-size:30px; color:var(--green); margin:0 0 14px; letter-spacing:-.005em; text-align:center; }
+  .slideshow .stage { position:relative; background:#1a1a1a;
+    border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+    height:min(540px, 65vh); display:flex; align-items:center; justify-content:center; }
+  .slideshow .stage img { max-width:100%; max-height:100%; object-fit:contain;
+    display:block; opacity:0; transition:opacity .35s; }
+  .slideshow .stage img.shown { opacity:1; }
+  .slideshow .nav { position:absolute; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(255,255,255,.85); color:var(--ink); font-size:24px;
+    line-height:1; display:flex; align-items:center; justify-content:center;
+    font-family:inherit; box-shadow:0 2px 6px rgba(0,0,0,.2);
+    opacity:0; transition:opacity .2s, background .15s; }
+  .slideshow .stage:hover .nav { opacity:1; }
+  .slideshow .nav:hover { background:#fff; }
+  .slideshow .nav.prev { left:14px; }
+  .slideshow .nav.next { right:14px; }
+  .slideshow .counter { position:absolute; bottom:10px; right:14px;
+    color:#fff; font-size:12px; background:rgba(0,0,0,.55);
+    padding:3px 10px; border-radius:999px; font-variant-numeric:tabular-nums; }
+  .slideshow .dots { display:flex; justify-content:center; gap:6px; margin-top:12px; flex-wrap:wrap; }
+  .slideshow .dot { width:8px; height:8px; border-radius:50%; border:none;
+    background:var(--rule); cursor:pointer; padding:0; transition:all .15s; }
+  .slideshow .dot:hover { background:var(--green-soft); }
+  .slideshow .dot.active { background:var(--green); transform:scale(1.3); }
+  @media (max-width:600px) {
+    .slideshow .stage { height:50vh; }
+    .slideshow h2 { font-size:24px; }
+    .slideshow .nav { opacity:1; width:36px; height:36px; font-size:20px; }
+  }
   footer.site { margin-top:80px; padding-top:24px; border-top:1px solid var(--rule);
     text-align:center; color:var(--ink-soft); font-size:13px; }
   footer.site a { color:var(--green); }
@@ -188,6 +230,17 @@ TEMPLATE = r"""<!DOCTYPE html>
   <p class="subtitle">Das Lexikon meiner Balkon-Pflanzen</p>
   <p class="intro">Eine wachsende Sammlung der Pflanzen, die ich auf meinem Berliner Balkon zu Gast habe oder hatte. Mit Steckbrief, Pflegehinweisen und einem Bild von Wikipedia. Alphabetisch geordnet, durchsuchbar und filterbar.</p>
 </header>
+
+<section class="slideshow" id="slideshow" style="display:none">
+  <h2>Impressionen 2026</h2>
+  <div class="stage" id="slide-stage">
+    <img id="slide-img" alt="">
+    <button class="nav prev" id="slide-prev" aria-label="Vorheriges Bild">‹</button>
+    <button class="nav next" id="slide-next" aria-label="Nächstes Bild">›</button>
+    <div class="counter" id="slide-counter"></div>
+  </div>
+  <div class="dots" id="slide-dots"></div>
+</section>
 
 <div class="controls">
   <button class="start-btn" id="start" title="Zurück zur Startansicht — Suche und Filter leeren"><span class="icon">↺</span>Start</button>
@@ -227,8 +280,63 @@ TEMPLATE = r"""<!DOCTYPE html>
 </div>
 
 <script id="plants-data" type="application/json">__PLANTS_JSON__</script>
+<script id="slideshow-data" type="application/json">__SLIDESHOW_JSON__</script>
 <script>
 const plants = JSON.parse(document.getElementById("plants-data").textContent);
+const slideshowImages = JSON.parse(document.getElementById("slideshow-data").textContent);
+
+/* === SLIDESHOW === */
+(function initSlideshow() {
+  if (!slideshowImages.length) return;
+  const section = document.getElementById("slideshow");
+  const img = document.getElementById("slide-img");
+  const stage = document.getElementById("slide-stage");
+  const dotsEl = document.getElementById("slide-dots");
+  const counterEl = document.getElementById("slide-counter");
+  section.style.display = "block";
+  let idx = 0;
+  const dots = slideshowImages.map((_, i) => {
+    const d = document.createElement("button");
+    d.className = "dot"; d.setAttribute("aria-label", `Bild ${i+1}`);
+    d.addEventListener("click", () => { show(i); restart(); });
+    dotsEl.appendChild(d);
+    return d;
+  });
+  function tryLoad(urls, j, onSuccess) {
+    if (j >= urls.length) return;
+    const probe = new Image();
+    probe.onload = () => onSuccess(urls[j]);
+    probe.onerror = () => tryLoad(urls, j + 1, onSuccess);
+    probe.src = urls[j];
+  }
+  function show(i) {
+    idx = (i + slideshowImages.length) % slideshowImages.length;
+    img.classList.remove("shown");
+    const file = encodeURIComponent(slideshowImages[idx]);
+    // Erst Balkonbilder/ probieren (lokal), dann Root (GitHub)
+    tryLoad(["Balkonbilder/" + file, file], 0, src => {
+      img.src = src;
+      requestAnimationFrame(() => img.classList.add("shown"));
+    });
+    dots.forEach((d, j) => d.classList.toggle("active", j === idx));
+    counterEl.textContent = `${idx+1} / ${slideshowImages.length}`;
+  }
+  document.getElementById("slide-prev").addEventListener("click", () => { show(idx-1); restart(); });
+  document.getElementById("slide-next").addEventListener("click", () => { show(idx+1); restart(); });
+  document.addEventListener("keydown", e => {
+    if (e.target.tagName === "INPUT") return;
+    if (e.key === "ArrowLeft") { show(idx-1); restart(); }
+    else if (e.key === "ArrowRight") { show(idx+1); restart(); }
+  });
+  let timer = null;
+  function start() { timer = setInterval(() => show(idx+1), 6000); }
+  function stop() { clearInterval(timer); }
+  function restart() { stop(); start(); }
+  stage.addEventListener("mouseenter", stop);
+  stage.addEventListener("mouseleave", start);
+  show(0); start();
+})();
+
 
 function sonneTags(s) {
   s = (s || "").toLowerCase();
@@ -468,13 +576,18 @@ def build(version: int) -> Path:
     # gegen </script> Sequenzen in den Daten
     plants_json = json.dumps(plants, ensure_ascii=False, indent=2)
     plants_json = plants_json.replace("</", "<\\/")
+    slideshow = scan_slideshow()
+    slideshow_json = json.dumps(slideshow, ensure_ascii=False).replace("</", "<\\/")
     html = TEMPLATE.replace("__PLANTS_JSON__", plants_json)
+    html = html.replace("__SLIDESHOW_JSON__", slideshow_json)
     html = html.replace("__VERSION__", str(version))
     html = html.replace("__BUILD_DATE__", build_date)
     out = ROOT / f"Balkonien_v{version}.html"
     out.write_text(html, encoding="utf-8")
     # index.html spiegelt immer die aktuelle Version — für GitHub Pages
     (ROOT / "index.html").write_text(html, encoding="utf-8")
+    if slideshow:
+        print(f"  📷 Slideshow: {len(slideshow)} Bilder eingebunden")
     return out
 
 def file_to_data_uri(path: Path) -> str | None:
@@ -559,7 +672,9 @@ def build_share(version: int) -> Path:
         build_date = build_date.replace(en, de)
     plants_json = json.dumps(plants, ensure_ascii=False, indent=2)
     plants_json = plants_json.replace("</", "<\\/")
+    # Share-Version verzichtet auf Slideshow, sonst wird die Datei zu groß
     html = TEMPLATE.replace("__PLANTS_JSON__", plants_json)
+    html = html.replace("__SLIDESHOW_JSON__", "[]")
     html = html.replace("__VERSION__", f"{version}-share")
     html = html.replace("__BUILD_DATE__", build_date)
     out = ROOT / f"Balkonien_v{version}_share.html"

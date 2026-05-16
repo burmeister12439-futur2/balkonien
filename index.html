@@ -200,7 +200,7 @@
 <main id="grid" class="grid"></main>
 
 <footer class="site">
-  Balkonien · Lexikon v10 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
+  Balkonien · Lexikon v11 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
 </footer>
 
 </div>
@@ -1135,7 +1135,7 @@
     "typ": "Wildkraut"
   }
 ]</script>
-<script id="slideshow-data" type="application/json">["IMG_8384.jpeg", "IMG_8385.jpeg", "IMG_8386.jpeg", "IMG_8387.jpeg", "IMG_8388.jpeg", "IMG_8389.jpeg", "IMG_8759.jpeg", "IMG_8762.jpeg", "IMG_8937.jpeg", "IMG_8939.jpeg", "IMG_9027.jpeg", "IMG_9034.jpeg", "IMG_9040.jpeg", "IMG_9055.jpeg", "IMG_9100.jpeg", "IMG_9101.jpeg", "IMG_9104.jpeg", "IMG_9158.jpeg"]</script>
+<script id="slideshow-data" type="application/json">["IMG_8384.jpeg", "IMG_8385.jpeg", "IMG_8386.jpeg", "IMG_8387.jpeg", "IMG_8388.jpeg", "IMG_8389.jpeg", "IMG_8939.jpeg", "IMG_9027.jpeg", "IMG_9040.jpeg", "IMG_9101.jpeg", "IMG_9104.jpeg", "IMG_9158.jpeg"]</script>
 <script>
 const plants = JSON.parse(document.getElementById("plants-data").textContent);
 const slideshowImages = JSON.parse(document.getElementById("slideshow-data").textContent);
@@ -1157,12 +1157,22 @@ const slideshowImages = JSON.parse(document.getElementById("slideshow-data").tex
     dotsEl.appendChild(d);
     return d;
   });
+  function tryLoad(urls, j, onSuccess) {
+    if (j >= urls.length) return;
+    const probe = new Image();
+    probe.onload = () => onSuccess(urls[j]);
+    probe.onerror = () => tryLoad(urls, j + 1, onSuccess);
+    probe.src = urls[j];
+  }
   function show(i) {
     idx = (i + slideshowImages.length) % slideshowImages.length;
     img.classList.remove("shown");
-    const next = new Image();
-    next.onload = () => { img.src = next.src; requestAnimationFrame(() => img.classList.add("shown")); };
-    next.src = "Balkonbilder/" + encodeURIComponent(slideshowImages[idx]);
+    const file = encodeURIComponent(slideshowImages[idx]);
+    // Erst Balkonbilder/ probieren (lokal), dann Root (GitHub)
+    tryLoad(["Balkonbilder/" + file, file], 0, src => {
+      img.src = src;
+      requestAnimationFrame(() => img.classList.add("shown"));
+    });
     dots.forEach((d, j) => d.classList.toggle("active", j === idx));
     counterEl.textContent = `${idx+1} / ${slideshowImages.length}`;
   }
