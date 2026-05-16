@@ -105,6 +105,39 @@
     border-bottom:1px solid var(--green-soft); }
   .card .links a:hover { color:var(--accent); border-color:var(--accent); }
   .empty { text-align:center; padding:80px 20px; color:var(--ink-soft); font-style:italic; }
+  /* Slideshow */
+  .slideshow { margin:0 0 36px; padding:0; }
+  .slideshow h2 { font-family:"Cormorant Garamond",Georgia,serif; font-weight:500;
+    font-size:30px; color:var(--green); margin:0 0 14px; letter-spacing:-.005em; text-align:center; }
+  .slideshow .stage { position:relative; background:#1a1a1a;
+    border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+    height:min(540px, 65vh); display:flex; align-items:center; justify-content:center; }
+  .slideshow .stage img { max-width:100%; max-height:100%; object-fit:contain;
+    display:block; opacity:0; transition:opacity .35s; }
+  .slideshow .stage img.shown { opacity:1; }
+  .slideshow .nav { position:absolute; top:50%; transform:translateY(-50%);
+    width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(255,255,255,.85); color:var(--ink); font-size:24px;
+    line-height:1; display:flex; align-items:center; justify-content:center;
+    font-family:inherit; box-shadow:0 2px 6px rgba(0,0,0,.2);
+    opacity:0; transition:opacity .2s, background .15s; }
+  .slideshow .stage:hover .nav { opacity:1; }
+  .slideshow .nav:hover { background:#fff; }
+  .slideshow .nav.prev { left:14px; }
+  .slideshow .nav.next { right:14px; }
+  .slideshow .counter { position:absolute; bottom:10px; right:14px;
+    color:#fff; font-size:12px; background:rgba(0,0,0,.55);
+    padding:3px 10px; border-radius:999px; font-variant-numeric:tabular-nums; }
+  .slideshow .dots { display:flex; justify-content:center; gap:6px; margin-top:12px; flex-wrap:wrap; }
+  .slideshow .dot { width:8px; height:8px; border-radius:50%; border:none;
+    background:var(--rule); cursor:pointer; padding:0; transition:all .15s; }
+  .slideshow .dot:hover { background:var(--green-soft); }
+  .slideshow .dot.active { background:var(--green); transform:scale(1.3); }
+  @media (max-width:600px) {
+    .slideshow .stage { height:50vh; }
+    .slideshow h2 { font-size:24px; }
+    .slideshow .nav { opacity:1; width:36px; height:36px; font-size:20px; }
+  }
   footer.site { margin-top:80px; padding-top:24px; border-top:1px solid var(--rule);
     text-align:center; color:var(--ink-soft); font-size:13px; }
   footer.site a { color:var(--green); }
@@ -123,6 +156,17 @@
   <p class="subtitle">Das Lexikon meiner Balkon-Pflanzen</p>
   <p class="intro">Eine wachsende Sammlung der Pflanzen, die ich auf meinem Berliner Balkon zu Gast habe oder hatte. Mit Steckbrief, Pflegehinweisen und einem Bild von Wikipedia. Alphabetisch geordnet, durchsuchbar und filterbar.</p>
 </header>
+
+<section class="slideshow" id="slideshow" style="display:none">
+  <h2>Impressionen 2026</h2>
+  <div class="stage" id="slide-stage">
+    <img id="slide-img" alt="">
+    <button class="nav prev" id="slide-prev" aria-label="Vorheriges Bild">‹</button>
+    <button class="nav next" id="slide-next" aria-label="Nächstes Bild">›</button>
+    <div class="counter" id="slide-counter"></div>
+  </div>
+  <div class="dots" id="slide-dots"></div>
+</section>
 
 <div class="controls">
   <button class="start-btn" id="start" title="Zurück zur Startansicht — Suche und Filter leeren"><span class="icon">↺</span>Start</button>
@@ -156,7 +200,7 @@
 <main id="grid" class="grid"></main>
 
 <footer class="site">
-  Balkonien · Lexikon v9 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
+  Balkonien · Lexikon v10 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
 </footer>
 
 </div>
@@ -1091,8 +1135,53 @@
     "typ": "Wildkraut"
   }
 ]</script>
+<script id="slideshow-data" type="application/json">["IMG_8384.jpeg", "IMG_8385.jpeg", "IMG_8386.jpeg", "IMG_8387.jpeg", "IMG_8388.jpeg", "IMG_8389.jpeg", "IMG_8759.jpeg", "IMG_8762.jpeg", "IMG_8937.jpeg", "IMG_8939.jpeg", "IMG_9027.jpeg", "IMG_9034.jpeg", "IMG_9040.jpeg", "IMG_9055.jpeg", "IMG_9100.jpeg", "IMG_9101.jpeg", "IMG_9104.jpeg", "IMG_9158.jpeg"]</script>
 <script>
 const plants = JSON.parse(document.getElementById("plants-data").textContent);
+const slideshowImages = JSON.parse(document.getElementById("slideshow-data").textContent);
+
+/* === SLIDESHOW === */
+(function initSlideshow() {
+  if (!slideshowImages.length) return;
+  const section = document.getElementById("slideshow");
+  const img = document.getElementById("slide-img");
+  const stage = document.getElementById("slide-stage");
+  const dotsEl = document.getElementById("slide-dots");
+  const counterEl = document.getElementById("slide-counter");
+  section.style.display = "block";
+  let idx = 0;
+  const dots = slideshowImages.map((_, i) => {
+    const d = document.createElement("button");
+    d.className = "dot"; d.setAttribute("aria-label", `Bild ${i+1}`);
+    d.addEventListener("click", () => { show(i); restart(); });
+    dotsEl.appendChild(d);
+    return d;
+  });
+  function show(i) {
+    idx = (i + slideshowImages.length) % slideshowImages.length;
+    img.classList.remove("shown");
+    const next = new Image();
+    next.onload = () => { img.src = next.src; requestAnimationFrame(() => img.classList.add("shown")); };
+    next.src = "Balkonbilder/" + encodeURIComponent(slideshowImages[idx]);
+    dots.forEach((d, j) => d.classList.toggle("active", j === idx));
+    counterEl.textContent = `${idx+1} / ${slideshowImages.length}`;
+  }
+  document.getElementById("slide-prev").addEventListener("click", () => { show(idx-1); restart(); });
+  document.getElementById("slide-next").addEventListener("click", () => { show(idx+1); restart(); });
+  document.addEventListener("keydown", e => {
+    if (e.target.tagName === "INPUT") return;
+    if (e.key === "ArrowLeft") { show(idx-1); restart(); }
+    else if (e.key === "ArrowRight") { show(idx+1); restart(); }
+  });
+  let timer = null;
+  function start() { timer = setInterval(() => show(idx+1), 6000); }
+  function stop() { clearInterval(timer); }
+  function restart() { stop(); start(); }
+  stage.addEventListener("mouseenter", stop);
+  stage.addEventListener("mouseleave", start);
+  show(0); start();
+})();
+
 
 function sonneTags(s) {
   s = (s || "").toLowerCase();
