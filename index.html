@@ -51,6 +51,9 @@
     color:var(--green); font-weight:500; padding-right:14px;
     border-right:1px solid var(--rule); margin-right:4px; }
   .totals .total-main strong { font-size:26px; }
+  .totals .own-photos { font-family:-apple-system,sans-serif; font-size:13px;
+    color:var(--ink-soft); margin-left:10px; font-weight:400; }
+  .totals .own-photos strong { font-size:14px; color:var(--accent); }
   .totals .typ-chip { padding:6px 12px; border-radius:999px; border:1px solid var(--rule);
     background:#fff; font-size:13px; color:var(--ink); cursor:pointer;
     display:inline-flex; align-items:center; gap:6px; font-family:inherit;
@@ -99,6 +102,10 @@
     background:var(--green-pale); border-left:3px solid var(--green-soft);
     border-radius:0 6px 6px 0; margin-bottom:12px; }
   .card .care strong { color:var(--green); }
+  .card .erfahrung { font-size:13.5px; font-style:italic; color:var(--ink);
+    padding:10px 12px; background:#fdf4ec; border-left:3px solid var(--accent);
+    border-radius:0 6px 6px 0; margin-bottom:12px; }
+  .card .erfahrung strong { font-style:normal; color:var(--accent); margin-right:4px; }
   .card .links { margin-top:auto; display:flex; flex-wrap:wrap; gap:8px 16px;
     padding-top:10px; border-top:1px solid var(--rule); }
   .card .links a { color:var(--green); text-decoration:none; font-size:13px;
@@ -154,7 +161,8 @@
   <div class="leaf">🌿</div>
   <h1>Balkonien</h1>
   <p class="subtitle">Das Lexikon meiner Balkon-Pflanzen</p>
-  <p class="intro">Eine wachsende Sammlung der Pflanzen, die ich auf meinem Berliner Balkon zu Gast habe oder hatte. Mit Steckbrief, Pflegehinweisen und einem Bild von Wikipedia. Alphabetisch geordnet, durchsuchbar und filterbar.</p>
+  <p class="intro">Ein Balkon ist kein Garten im Kleinen, sondern ein eigener Lebensraum: begrenzt, wetterabhängig, überraschend. Dieses Lexikon sammelt, was dort wächst, blüht, scheitert, wiederkommt oder verschwindet.</p>
+  <p class="intro">Eine wachsende Sammlung meiner Balkon-Pflanzen in Berlin — mit Steckbrief, Pflegehinweisen, Bildern, Suche und Filtern.</p>
 </header>
 
 <section class="slideshow" id="slideshow" style="display:none">
@@ -179,15 +187,15 @@
   </div>
   <div class="filter-group" data-group="sonne">
     <span class="label">Sonne:</span>
-    <button class="chip" data-filter="vollsonnig">☀️ voll</button>
-    <button class="chip" data-filter="sonnig">🌤️ sonnig</button>
-    <button class="chip" data-filter="halbschattig">⛅ halb</button>
+    <button class="chip" data-filter="vollsonnig">vollsonnig</button>
+    <button class="chip" data-filter="sonnig">sonnig</button>
+    <button class="chip" data-filter="halbschattig">halbschattig</button>
   </div>
   <div class="filter-group" data-group="badge">
     <span class="label">Merkmal:</span>
-    <button class="chip" data-filter="bienenfreundlich">🐝 Bienen</button>
-    <button class="chip" data-filter="essbar">🍴 essbar</button>
-    <button class="chip" data-filter="giftig">⚠️ giftig</button>
+    <button class="chip" data-filter="bienenfreundlich">bienenfreundlich</button>
+    <button class="chip" data-filter="essbar">essbar</button>
+    <button class="chip" data-filter="giftig">giftig</button>
   </div>
 </div>
 
@@ -200,12 +208,42 @@
 <main id="grid" class="grid"></main>
 
 <footer class="site">
-  Balkonien · Lexikon v12 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
+  Balkonien · Lexikon v14 · Mai 2026 · Bilder via <a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">Wikimedia Commons</a> · Klaus Burmeister
 </footer>
 
 </div>
 
 <script id="plants-data" type="application/json">[
+  {
+    "id": "acker-kratzdistel",
+    "name": "Acker-Kratzdistel",
+    "wiss": "Cirsium arvense",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Acker-Kratzdistel",
+    "emoji": "💜",
+    "herkunft": "Eurasien",
+    "lebensdauer": "mehrjährig (Wurzelstaude)",
+    "hoehe": "50–150 cm",
+    "bluete": "Juni–September (rosa-lila)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Selbstaussaat oder Frühjahr",
+    "typ": "Wildkraut",
+    "desc": "Eine der wichtigsten Bienen- und Schmetterlingsweiden des Sommers — Distelfinken und Stieglitze stürzen sich auf die Samen. Auf Feldern oft verflucht, im Topf bleibt sie beherrschbar und wird zum Magneten für Bestäuber und Vögel.",
+    "care": "Im freien Boden bildet sie ausläuferartige Wurzeln und wuchert — im Topf gut beherrschbar. Sehr trockenheitsverträglich. Verblühte Stängel nicht zu schnell entfernen: dann kommen die Stieglitze und holen sich die Samen.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlinge",
+      "Wildbienen",
+      "Vögel"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Acker-Kratzdistel"
+      }
+    ]
+  },
   {
     "id": "buchweizen",
     "name": "Buchweizen",
@@ -268,7 +306,8 @@
         "url": "https://www.ndr.de/ratgeber/garten/Clematis-richtig-pflanzen-und-pflegen,clematis120.html"
       }
     ],
-    "typ": "Kletterpflanze"
+    "typ": "Kletterpflanze",
+    "erfahrung": "Auf meinem Balkon steht die Sorte ‚Walenburg‘ — eine späte Hybride mit dunkelblau-violetten Blüten und weißem Sternenmuster. Robust, anspruchslos, sehr blühfreudig."
   },
   {
     "id": "diamantgras",
@@ -341,6 +380,37 @@
       }
     ],
     "typ": "Blume"
+  },
+  {
+    "id": "echter-salbei",
+    "name": "Echter Salbei",
+    "wiss": "Salvia officinalis",
+    "familie": "Lippenblütler (Lamiaceae)",
+    "wikiTitle": "Echter_Salbei",
+    "emoji": "🌿",
+    "herkunft": "Mittelmeerraum",
+    "lebensdauer": "mehrjährig (Halbstrauch)",
+    "hoehe": "30–70 cm",
+    "bluete": "Juni–August (violett-blau)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Pflanzung Mai",
+    "typ": "Kraut",
+    "desc": "Heilpflanze, Küchenkraut und Bienenweide in einem. Die graugrünen, samtigen Blätter duften aromatisch-bitter — schon der lateinische Name spricht für sich: salvare heißt „heilen“. Eine der wichtigsten Klostergartenpflanzen.",
+    "care": "Vollsonnig, magerer, durchlässiger Boden. Trockenheit gut verträglich, Staunässe gar nicht. Im Frühjahr leicht zurückschneiden, dann buschig. In Berlin nur bedingt winterhart — bei strengem Frost im Topf an die Wand stellen oder einpacken.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Heilpflanze",
+      "Trockenheit",
+      "duftend"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Echter_Salbei"
+      }
+    ]
   },
   {
     "id": "flaschenbuerstengras",
@@ -485,6 +555,40 @@
       }
     ],
     "typ": "Blume"
+  },
+  {
+    "id": "gold-wolfsmilch",
+    "name": "Gold-Wolfsmilch",
+    "wiss": "Euphorbia polychroma (Vielfarbige Wolfsmilch)",
+    "familie": "Wolfsmilchgewächse (Euphorbiaceae)",
+    "wikiTitle": "Vielfarbige_Wolfsmilch",
+    "emoji": "💛",
+    "herkunft": "Süd- und Südosteuropa",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "30–50 cm",
+    "bluete": "April–Juni (leuchtend goldgelbe Hochblätter)",
+    "sonne": "vollsonnig–sonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Pflanzung Frühjahr oder Herbst",
+    "typ": "Blume",
+    "desc": "Eine der spektakulärsten Frühjahrsstauden überhaupt — ein wahres goldenes Polster, das von April bis Juni regelrecht leuchtet. Im Herbst rot-orange gefärbtes Laub als zweite Show. Komplett winterhart und langlebig. Vorsicht: Der weiße Milchsaft ist giftig und reizt die Haut.",
+    "care": "Vollsonnig, durchlässig, eher trocken. Sehr genügsam und anspruchslos. Beim Zurückschneiden im Spätherbst Handschuhe tragen — der austretende Milchsaft brennt auf der Haut und ist für Kinder und Haustiere giftig.",
+    "badges": [
+      "bienenfreundlich",
+      "giftig",
+      "Trockenheit",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Vielfarbige_Wolfsmilch"
+      },
+      {
+        "label": "Baumschule Horstmann",
+        "url": "https://www.baumschule-horstmann.de/shop/exec/product/698/1620/gold-wolfsmilch.html"
+      }
+    ]
   },
   {
     "id": "hibiskus",
@@ -805,6 +909,37 @@
     "typ": "Blume"
   },
   {
+    "id": "praechtige-fetthenne",
+    "name": "Prächtige Fetthenne",
+    "wiss": "Hylotelephium spectabile (Syn. Sedum spectabile)",
+    "familie": "Dickblattgewächse (Crassulaceae)",
+    "wikiTitle": "Prächtige_Fetthenne",
+    "emoji": "🌸",
+    "herkunft": "Ostasien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "30–50 cm",
+    "bluete": "August–Oktober (rosa-rot, später bronze)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "typ": "Blume",
+    "desc": "Spätsommerblüher und einer der besten Hummel- und Schmetterlingsmagnete des Herbstes — wenn andere Nektarquellen versiegen, kommen die Bestäuber zu ihr. Die fleischigen Blätter speichern Wasser, daher extrem trockenheitstolerant. Die Samenstände bleiben den ganzen Winter über attraktiv.",
+    "care": "Vollsonnig, sandig-durchlässig, eher karg halten. Sehr genügsam. Im Frühjahr (März) bodennah zurückschneiden. Komplett winterhart bis −25 °C.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlinge",
+      "Trockenheit",
+      "winterhart",
+      "winterstruktur"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Pr%C3%A4chtige_Fetthenne"
+      }
+    ]
+  },
+  {
     "id": "ringelblume",
     "name": "Ringelblume",
     "wiss": "Calendula officinalis",
@@ -834,6 +969,34 @@
     "typ": "Kraut"
   },
   {
+    "id": "roggen",
+    "name": "Roggen",
+    "wiss": "Secale cereale",
+    "familie": "Süßgräser (Poaceae)",
+    "wikiTitle": "Roggen",
+    "emoji": "🌾",
+    "herkunft": "Vorderasien",
+    "lebensdauer": "einjährig (Winterung)",
+    "hoehe": "100–180 cm",
+    "bluete": "Mai–Juni",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat September–Oktober",
+    "typ": "Nutzpflanze",
+    "desc": "Eines der ältesten Brotgetreide Mitteleuropas — wächst noch dort, wo Weizen längst aufgibt. Im Topf zeigen die schlanken, im Wind wedelnden Halme eine unerwartet elegante Seite. Wird im Herbst gesät, überwintert grün und reift im Juni–Juli.",
+    "care": "Aussaat September–Oktober direkt in den Topf, durchlässige Erde. Roggen ist extrem winterhart und treibt im Frühjahr durch. Nach der Reife ernten oder als Strukturpflanze stehen lassen — die Halme im Topf schimmern dann silbrig-gold.",
+    "badges": [
+      "essbar",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Roggen"
+      }
+    ]
+  },
+  {
     "id": "schachtelhalm",
     "name": "Schachtelhalm",
     "wiss": "Equisetum spp.",
@@ -859,7 +1022,42 @@
         "url": "https://de.wikipedia.org/wiki/Schachtelhalme"
       }
     ],
-    "typ": "Wildkraut"
+    "typ": "Wildkraut",
+    "localImage": "Bilder/Schachtelhalm.png",
+    "photoCredit": "Foto: Klaus"
+  },
+  {
+    "id": "schirmbambus",
+    "name": "Schirmbambus",
+    "wiss": "Fargesia murielae",
+    "familie": "Süßgräser (Poaceae)",
+    "wikiTitle": "Fargesia_murielae",
+    "emoji": "🎋",
+    "herkunft": "China",
+    "lebensdauer": "mehrjährig (immergrün)",
+    "hoehe": "2–4 m",
+    "bluete": "sehr selten (alle ca. 100 Jahre)",
+    "sonne": "halbschattig–sonnig",
+    "wasser": "mäßig–hoch",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "typ": "Strauch",
+    "desc": "Horstbildender Bambus, der NICHT wuchert — anders als die berüchtigten Phyllostachys-Arten. Bildet einen dichten Schirm aus überhängenden, leuchtend grünen Halmen — ideal als immergrüner Sichtschutz auf dem Balkon. Winterhart bis −29 °C, eine Trumpfkarte für den nordseitigen Balkon.",
+    "care": "Halbschattig bis sonnig, gleichmäßig feucht halten — nie austrocknen lassen, besonders im Sommer. Im Topf alle 1–2 Jahre umtopfen, dann reichlich Platz und frische Erde. Wird nicht zurückgeschnitten. Im Winter braucht der Topf Wurzelschutz (Vlies, Jutesack, an die Wand stellen).",
+    "badges": [
+      "winterhart",
+      "immergrün",
+      "Sichtschutz"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Fargesia_murielae"
+      },
+      {
+        "label": "Baumschule Horstmann",
+        "url": "https://www.baumschule-horstmann.de/schirmbambus-124_58288.html"
+      }
+    ]
   },
   {
     "id": "schwarzkuemmel",
@@ -1066,6 +1264,35 @@
     "typ": "Wildkraut"
   },
   {
+    "id": "weisser-gaensefuss",
+    "name": "Weißer Gänsefuß",
+    "wiss": "Chenopodium album",
+    "familie": "Fuchsschwanzgewächse (Amaranthaceae)",
+    "wikiTitle": "Weißer_Gänsefuß",
+    "emoji": "🌿",
+    "herkunft": "weltweit",
+    "lebensdauer": "einjährig",
+    "hoehe": "30–150 cm",
+    "bluete": "Juni–Oktober (unscheinbare grünliche Knäuel)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Selbstaussaat (taucht oft ungefragt im Topf auf)",
+    "typ": "Wildkraut",
+    "desc": "Allgegenwärtiges Wildkraut, das meist als „Unkraut“ abgetan wird, dabei ein hochwertiges Wildgemüse ist. Die jungen Blätter schmecken wie zarter Spinat und sind reich an Eisen, Calcium und Vitamin C. Sät sich beeindruckend selbstständig aus.",
+    "care": "Wächst von alleine, fast nicht zu vertreiben. Junge Blätter vor der Blüte ernten — danach werden sie zäh und sandig. Vor der Samenreife schneiden, sonst übernimmt er den ganzen Topf.",
+    "badges": [
+      "essbar",
+      "Wildkraut",
+      "Selbstaussaat"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Wei%C3%9Fer_G%C3%A4nsefu%C3%9F"
+      }
+    ]
+  },
+  {
     "id": "weisser-steinklee",
     "name": "Weißer Steinklee",
     "wiss": "Melilotus albus",
@@ -1135,7 +1362,7 @@
     "typ": "Wildkraut"
   }
 ]</script>
-<script id="slideshow-data" type="application/json">["IMG_8384.jpeg", "IMG_8385.jpeg", "IMG_8386.jpeg", "IMG_8387.jpeg", "IMG_8388.jpeg", "IMG_8389.jpeg", "IMG_8939.jpeg", "IMG_9027.jpeg", "IMG_9040.jpeg", "IMG_9101.jpeg", "IMG_9104.jpeg", "IMG_9158.jpeg"]</script>
+<script id="slideshow-data" type="application/json">["IMG_8384.jpeg", "IMG_8385.jpeg", "IMG_8386.jpeg", "IMG_8387.jpeg", "IMG_8388.jpeg", "IMG_8939.jpeg", "IMG_9101.jpeg", "IMG_9104.jpeg", "IMG_9178.JPG", "IMG_9179.JPG", "IMG_9180.JPG", "IMG_9182.JPG", "IMG_9183.JPG", "IMG_9184.JPG", "IMG_9205.JPG"]</script>
 <script>
 const plants = JSON.parse(document.getElementById("plants-data").textContent);
 const slideshowImages = JSON.parse(document.getElementById("slideshow-data").textContent);
@@ -1261,8 +1488,9 @@ function renderTotals() {
       <span class="icon">${TYP_ICONS[t]||"🌱"}</span>${t}<span class="num">${n}</span>
     </button>`;
   }).join("");
+  const eigene = plants.filter(p => p.localImage).length;
   totalsEl.innerHTML = `
-    <span class="total-main"><strong>${plants.length}</strong> Pflanzen</span>
+    <span class="total-main"><strong>${plants.length}</strong> Pflanzen<span class="own-photos">· <strong>${eigene}</strong> eigene Fotos</span></span>
     ${chips}
   `;
   totalsEl.querySelectorAll(".typ-chip").forEach(btn => {
@@ -1318,6 +1546,7 @@ function renderCard(p) {
         </table>
         <p class="desc">${esc(p.desc)}</p>
         <div class="care"><strong>Pflege:</strong> ${esc(p.care)}</div>
+        ${p.erfahrung ? `<div class="erfahrung"><strong>Meine Erfahrung:</strong>${esc(p.erfahrung)}</div>` : ""}
         <div class="links">${linksHtml}</div>
       </div>
     </article>

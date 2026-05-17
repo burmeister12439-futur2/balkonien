@@ -31,7 +31,7 @@ def scan_slideshow() -> list[str]:
 REQUIRED = ["id","name","wiss","familie","wikiTitle","emoji",
             "herkunft","lebensdauer","hoehe","bluete","sonne",
             "wasser","pflanzzeit","typ","desc","care","badges","links"]
-# Optionale Felder: localImage (Dateiname relativ zur HTML), photoCredit
+# Optionale Felder: localImage, photoCredit, erfahrung
 TYPEN = ["Blume","Kraut","Wildkraut","Gras","Nutzpflanze","Strauch","Kletterpflanze"]
 
 def load_plants() -> list[dict]:
@@ -125,6 +125,9 @@ TEMPLATE = r"""<!DOCTYPE html>
     color:var(--green); font-weight:500; padding-right:14px;
     border-right:1px solid var(--rule); margin-right:4px; }
   .totals .total-main strong { font-size:26px; }
+  .totals .own-photos { font-family:-apple-system,sans-serif; font-size:13px;
+    color:var(--ink-soft); margin-left:10px; font-weight:400; }
+  .totals .own-photos strong { font-size:14px; color:var(--accent); }
   .totals .typ-chip { padding:6px 12px; border-radius:999px; border:1px solid var(--rule);
     background:#fff; font-size:13px; color:var(--ink); cursor:pointer;
     display:inline-flex; align-items:center; gap:6px; font-family:inherit;
@@ -173,6 +176,10 @@ TEMPLATE = r"""<!DOCTYPE html>
     background:var(--green-pale); border-left:3px solid var(--green-soft);
     border-radius:0 6px 6px 0; margin-bottom:12px; }
   .card .care strong { color:var(--green); }
+  .card .erfahrung { font-size:13.5px; font-style:italic; color:var(--ink);
+    padding:10px 12px; background:#fdf4ec; border-left:3px solid var(--accent);
+    border-radius:0 6px 6px 0; margin-bottom:12px; }
+  .card .erfahrung strong { font-style:normal; color:var(--accent); margin-right:4px; }
   .card .links { margin-top:auto; display:flex; flex-wrap:wrap; gap:8px 16px;
     padding-top:10px; border-top:1px solid var(--rule); }
   .card .links a { color:var(--green); text-decoration:none; font-size:13px;
@@ -228,7 +235,8 @@ TEMPLATE = r"""<!DOCTYPE html>
   <div class="leaf">🌿</div>
   <h1>Balkonien</h1>
   <p class="subtitle">Das Lexikon meiner Balkon-Pflanzen</p>
-  <p class="intro">Eine wachsende Sammlung der Pflanzen, die ich auf meinem Berliner Balkon zu Gast habe oder hatte. Mit Steckbrief, Pflegehinweisen und einem Bild von Wikipedia. Alphabetisch geordnet, durchsuchbar und filterbar.</p>
+  <p class="intro">Ein Balkon ist kein Garten im Kleinen, sondern ein eigener Lebensraum: begrenzt, wetterabhängig, überraschend. Dieses Lexikon sammelt, was dort wächst, blüht, scheitert, wiederkommt oder verschwindet.</p>
+  <p class="intro">Eine wachsende Sammlung meiner Balkon-Pflanzen in Berlin — mit Steckbrief, Pflegehinweisen, Bildern, Suche und Filtern.</p>
 </header>
 
 <section class="slideshow" id="slideshow" style="display:none">
@@ -253,15 +261,15 @@ TEMPLATE = r"""<!DOCTYPE html>
   </div>
   <div class="filter-group" data-group="sonne">
     <span class="label">Sonne:</span>
-    <button class="chip" data-filter="vollsonnig">☀️ voll</button>
-    <button class="chip" data-filter="sonnig">🌤️ sonnig</button>
-    <button class="chip" data-filter="halbschattig">⛅ halb</button>
+    <button class="chip" data-filter="vollsonnig">vollsonnig</button>
+    <button class="chip" data-filter="sonnig">sonnig</button>
+    <button class="chip" data-filter="halbschattig">halbschattig</button>
   </div>
   <div class="filter-group" data-group="badge">
     <span class="label">Merkmal:</span>
-    <button class="chip" data-filter="bienenfreundlich">🐝 Bienen</button>
-    <button class="chip" data-filter="essbar">🍴 essbar</button>
-    <button class="chip" data-filter="giftig">⚠️ giftig</button>
+    <button class="chip" data-filter="bienenfreundlich">bienenfreundlich</button>
+    <button class="chip" data-filter="essbar">essbar</button>
+    <button class="chip" data-filter="giftig">giftig</button>
   </div>
 </div>
 
@@ -329,7 +337,7 @@ const slideshowImages = JSON.parse(document.getElementById("slideshow-data").tex
     else if (e.key === "ArrowRight") { show(idx+1); restart(); }
   });
   let timer = null;
-  function start() { timer = setInterval(() => show(idx+1), 6000); }
+  function start() { timer = setInterval(() => show(idx+1), 3000); }
   function stop() { clearInterval(timer); }
   function restart() { stop(); start(); }
   stage.addEventListener("mouseenter", stop);
@@ -406,8 +414,9 @@ function renderTotals() {
       <span class="icon">${TYP_ICONS[t]||"🌱"}</span>${t}<span class="num">${n}</span>
     </button>`;
   }).join("");
+  const eigene = plants.filter(p => p.localImage).length;
   totalsEl.innerHTML = `
-    <span class="total-main"><strong>${plants.length}</strong> Pflanzen</span>
+    <span class="total-main"><strong>${plants.length}</strong> Pflanzen<span class="own-photos">· <strong>${eigene}</strong> eigene Fotos</span></span>
     ${chips}
   `;
   totalsEl.querySelectorAll(".typ-chip").forEach(btn => {
@@ -463,6 +472,7 @@ function renderCard(p) {
         </table>
         <p class="desc">${esc(p.desc)}</p>
         <div class="care"><strong>Pflege:</strong> ${esc(p.care)}</div>
+        ${p.erfahrung ? `<div class="erfahrung"><strong>Meine Erfahrung:</strong>${esc(p.erfahrung)}</div>` : ""}
         <div class="links">${linksHtml}</div>
       </div>
     </article>
