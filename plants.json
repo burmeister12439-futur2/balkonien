@@ -1145,5 +1145,150 @@
       }
     ],
     "typ": "Wildkraut"
+  },
+  {
+    "id": "johanniskraut",
+    "name": "Echtes Johanniskraut",
+    "wiss": "Hypericum perforatum",
+    "familie": "Johanniskrautgewächse (Hypericaceae)",
+    "wikiTitle": "Echtes_Johanniskraut",
+    "emoji": "💛",
+    "herkunft": "Europa, Westasien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "30–90 cm",
+    "bluete": "Juni–August (goldgelb)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Pflanzung Frühjahr oder Herbst",
+    "typ": "Kraut",
+    "desc": "Die klassische Heilpflanze gegen depressive Verstimmungen, traditionell um den Johannistag (24. Juni) geerntet. Hält man ein Blatt gegen das Licht, erscheinen die Blätter wie durchlöchert — das sind durchscheinende Öldrüsen. Zerreibt man die Blüten, färben sie die Finger rot.",
+    "care": "Sehr genügsam und winterhart. Liebt sonnige, trockene, magere Standorte. Praktisch wartungsfrei. Achtung: kann bei hellhäutigen Menschen und Weidetieren die Lichtempfindlichkeit erhöhen.",
+    "badges": [
+      "bienenfreundlich",
+      "Heilpflanze",
+      "winterhart",
+      "Trockenheit"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Echtes_Johanniskraut"
+      }
+    ]
+  },
+  {
+    "id": "grasnelke",
+    "name": "Strand-Grasnelke",
+    "wiss": "Armeria maritima",
+    "familie": "Bleiwurzgewächse (Plumbaginaceae)",
+    "wikiTitle": "Strand-Grasnelke",
+    "emoji": "🌸",
+    "herkunft": "Küsten und Gebirge Europas",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "10–25 cm",
+    "bluete": "Mai–August, oft Nachblüte bis Oktober (rosa, weiß)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "typ": "Blume",
+    "desc": "Ein dichtes, grasartiges Polster, über dem zierliche kugelige Blütenköpfchen auf dünnen Stielen schweben. Salztolerant und trockenheitsfest — ideal für sonnige Topfränder und Steingärten. Trotz des Namens keine echte Nelke.",
+    "care": "Durchlässiger, eher magerer Boden, keine Staunässe. Verblühtes abschneiden fördert die Nachblüte. Vollkommen winterhart. Bei zu viel Nässe oder Dünger fault das Polster von innen.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart",
+      "Trockenheit"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Strand-Grasnelke"
+      }
+    ]
+  },
+  {
+    "id": "lavendel",
+    "name": "Echter Lavendel",
+    "wiss": "Lavandula angustifolia",
+    "familie": "Lippenblütler (Lamiaceae)",
+    "wikiTitle": "Echter_Lavendel",
+    "emoji": "💜",
+    "herkunft": "Westliches Mittelmeer",
+    "lebensdauer": "mehrjährig (Halbstrauch)",
+    "hoehe": "30–60 cm",
+    "bluete": "Juni–August (violett-blau)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Pflanzung Mai",
+    "typ": "Strauch",
+    "desc": "Der Inbegriff des Sommerdufts und ein Magnet für Bienen, Hummeln und Schmetterlinge. Aromatisches Mittelmeergewächs, das Wärme und volle Sonne liebt. Der Echte Lavendel ist deutlich winterhärter als Schopf- oder Speik-Lavendel.",
+    "care": "Durchlässiger, kalkhaltiger, magerer Boden — Staunässe ist sein größter Feind. Nach der Blüte und im Frühjahr zurückschneiden, aber nie ins alte Holz. In Berlin geschützt aufstellen, dann übersteht er den Winter gut.",
+    "badges": [
+      "bienenfreundlich",
+      "duftend",
+      "Schmetterlinge",
+      "winterhart",
+      "Trockenheit"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Echter_Lavendel"
+      }
+    ]
+  },
+  {
+    "id": "petunie",
+    "name": "Petunie",
+    "wiss": "Petunia × atkinsiana",
+    "familie": "Nachtschattengewächse (Solanaceae)",
+    "wikiTitle": "Petunien",
+    "emoji": "🌺",
+    "herkunft": "Südamerika (Zuchtform)",
+    "lebensdauer": "einjährig (kultiviert)",
+    "hoehe": "20–40 cm (hängend bis 80 cm)",
+    "bluete": "Mai–Oktober (alle Farben außer reinem Gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "hoch",
+    "pflanzzeit": "Pflanzung nach den Eisheiligen (Mitte Mai)",
+    "typ": "Blume",
+    "desc": "Der Dauerblüher unter den Balkonklassikern. Übersät sich den ganzen Sommer mit trichterförmigen Blüten. Verwandt mit Tomate und Kartoffel. Moderne Sorten wie Surfinia oder Calibrachoa blühen ununterbrochen ohne Ausputzen.",
+    "care": "Hungrig und durstig: regelmäßig wässern und wöchentlich düngen — sonst vergilben die Blätter (Eisenmangel). Verblühtes der älteren Sorten ausputzen. Verträgt keinen Frost, daher erst nach den Eisheiligen nach draußen.",
+    "badges": [
+      "Dauerblüher"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Petunien"
+      }
+    ]
+  },
+  {
+    "id": "sterndolde",
+    "name": "Große Sterndolde",
+    "wiss": "Astrantia major",
+    "familie": "Doldenblütler (Apiaceae)",
+    "wikiTitle": "Große_Sterndolde",
+    "emoji": "✨",
+    "herkunft": "Mittel- und Südeuropa (Bergwiesen, Auwälder)",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "40–80 cm",
+    "bluete": "Juni–September (weiß, rosa, weinrot)",
+    "sonne": "halbschattig",
+    "wasser": "mäßig–hoch",
+    "pflanzzeit": "Pflanzung Frühjahr oder Herbst",
+    "typ": "Blume",
+    "desc": "Eine der elegantesten Stauden für halbschattige Ecken. Die filigranen Blüten sehen aus wie kleine, von einem Kranz spitzer Hüllblätter umgebene Sterne — daher der Name. Wertvolle Schnitt- und Trockenblume, die lange hält.",
+    "care": "Liebt frischen, humosen Boden, der nicht austrocknet — im Topf gleichmäßig feucht halten. Verblühtes abschneiden bringt eine zweite Blüte. Vollkommen winterhart und langlebig.",
+    "badges": [
+      "bienenfreundlich",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gro%C3%9Fe_Sterndolde"
+      }
+    ]
   }
 ]
