@@ -154,7 +154,7 @@ TEMPLATE = r"""<!DOCTYPE html>
     background:linear-gradient(135deg, var(--green-pale), #d8e2cc);
     position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; }
   .card .image img { width:100%; height:100%; object-fit:cover; display:block; }
-  .card .image .placeholder { font-size:64px; opacity:.55; filter:saturate(.8); }
+  .card .image .placeholder { font-family:"Cormorant Garamond",Georgia,serif; font-size:22px; color:var(--green); opacity:.5; padding:0 18px; text-align:center; }
   .card .image .credit { position:absolute; bottom:4px; right:6px; font-size:10px;
     color:#fff; background:rgba(0,0,0,.45); padding:2px 6px; border-radius:4px; text-decoration:none; }
   .card .image .credit.local { background:rgba(74,107,58,.7); }
@@ -232,7 +232,6 @@ TEMPLATE = r"""<!DOCTYPE html>
 <div class="wrap">
 
 <header class="site">
-  <div class="leaf">🌿</div>
   <h1>Balkonien</h1>
   <p class="subtitle">Das Lexikon meiner Balkon-Pflanzen</p>
   <p class="intro">Ein Balkon ist kein Garten im Kleinen, sondern ein eigener Lebensraum: begrenzt, wetterabhängig, überraschend. Dieses Lexikon sammelt, was dort wächst, blüht, scheitert, wiederkommt oder verschwindet.</p>
@@ -366,20 +365,6 @@ function lebensdauerTags(l) {
 function badgeMatch(plant, filter) {
   return (plant.badges || []).some(b => b.toLowerCase().includes(filter.toLowerCase()));
 }
-function sunIcon(s) {
-  s = (s || "").toLowerCase();
-  if (s.includes("vollsonnig")) return "☀️";
-  if (s.includes("halbschattig")) return "⛅";
-  if (s.includes("sonnig")) return "🌤️";
-  return "🌥️";
-}
-function waterIcon(w) {
-  w = (w || "").toLowerCase();
-  if (w.includes("niedrig")) return "💧";
-  if (w.includes("hoch")) return "💧💧💧";
-  return "💧💧";
-}
-
 const grid = document.getElementById("grid");
 const search = document.getElementById("search");
 const countEl = document.getElementById("count");
@@ -388,15 +373,6 @@ const totalsEl = document.getElementById("totals");
 const filterButtons = document.querySelectorAll(".chip");
 let activeFilters = { lebensdauer:null, sonne:null, badge:null, typ:null };
 
-const TYP_ICONS = {
-  "Blume": "🌸",
-  "Kraut": "🌿",
-  "Wildkraut": "🌱",
-  "Gras": "🌾",
-  "Nutzpflanze": "🌽",
-  "Strauch": "🌳",
-  "Kletterpflanze": "🍃"
-};
 const TYP_ORDER = ["Blume","Kraut","Wildkraut","Gras","Nutzpflanze","Strauch","Kletterpflanze"];
 
 function renderTotals() {
@@ -411,7 +387,7 @@ function renderTotals() {
     const isActive = activeFilters.typ === t;
     const zero = n === 0 ? " zero" : "";
     return `<button class="typ-chip${isActive ? " active" : ""}${zero}" data-typ="${t}"${zero ? " disabled" : ""}>
-      <span class="icon">${TYP_ICONS[t]||"🌱"}</span>${t}<span class="num">${n}</span>
+      ${t}<span class="num">${n}</span>
     </button>`;
   }).join("");
   const eigene = plants.filter(p => p.localImage).length;
@@ -448,7 +424,7 @@ function renderCard(p) {
   const wikiAttr = p.localImage ? "" : esc(p.wikiTitle);
   const imageInner = p.localImage
     ? `<img src="${esc(p.localImage)}" alt="" loading="lazy">${p.photoCredit ? `<span class="credit local">${esc(p.photoCredit)}</span>` : ""}`
-    : `<span class="placeholder">${p.emoji || "🌱"}</span>`;
+    : `<span class="placeholder">${esc(p.name)}</span>`;
   return `
     <article class="card" data-id="${esc(p.id)}">
       <div class="image" data-wiki="${wikiAttr}">
@@ -466,8 +442,8 @@ function renderCard(p) {
           <tr><td>Lebensdauer</td><td>${esc(p.lebensdauer)}</td></tr>
           <tr><td>Wuchshöhe</td><td>${esc(p.hoehe)}</td></tr>
           <tr><td>Blütezeit</td><td>${esc(p.bluete)}</td></tr>
-          <tr><td>Sonne</td><td>${sunIcon(p.sonne)} ${esc(p.sonne)}</td></tr>
-          <tr><td>Wasser</td><td>${waterIcon(p.wasser)} ${esc(p.wasser)}</td></tr>
+          <tr><td>Sonne</td><td>${esc(p.sonne)}</td></tr>
+          <tr><td>Wasser</td><td>${esc(p.wasser)}</td></tr>
           <tr><td>Pflanzzeit</td><td>${esc(p.pflanzzeit)}</td></tr>
         </table>
         <p class="desc">${esc(p.desc)}</p>
@@ -584,7 +560,7 @@ def build(version: int) -> Path:
         build_date = build_date.replace(en, de)
     # JSON in <script type="application/json"> einbetten — eingebauter Schutz
     # gegen </script> Sequenzen in den Daten
-    plants_json = json.dumps(plants, ensure_ascii=False, indent=2)
+    plants_json = json.dumps([{k: v for k, v in p.items() if k != "emoji"} for p in plants], ensure_ascii=False, indent=2)
     plants_json = plants_json.replace("</", "<\\/")
     slideshow = scan_slideshow()
     slideshow_json = json.dumps(slideshow, ensure_ascii=False).replace("</", "<\\/")
@@ -680,7 +656,7 @@ def build_share(version: int) -> Path:
                  "November":"November","December":"Dezember"}
     for en, de in de_months.items():
         build_date = build_date.replace(en, de)
-    plants_json = json.dumps(plants, ensure_ascii=False, indent=2)
+    plants_json = json.dumps([{k: v for k, v in p.items() if k != "emoji"} for p in plants], ensure_ascii=False, indent=2)
     plants_json = plants_json.replace("</", "<\\/")
     # Share-Version verzichtet auf Slideshow, sonst wird die Datei zu groß
     html = TEMPLATE.replace("__PLANTS_JSON__", plants_json)
