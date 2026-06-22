@@ -1290,5 +1290,36 @@
         "url": "https://de.wikipedia.org/wiki/Gro%C3%9Fe_Sterndolde"
       }
     ]
+  },
+  {
+    "id": "wegwarte",
+    "name": "Wegwarte",
+    "wiss": "Cichorium intybus",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Gemeine_Wegwarte",
+    "emoji": "💙",
+    "herkunft": "Europa, Vorderasien",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "30–140 cm",
+    "bluete": "Juli–September (himmelblau)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Aussaat Frühjahr",
+    "typ": "Wildkraut",
+    "desc": "Die himmelblaue Pflanze sonniger Wegränder — Blume des Jahres 2009. Die Blüten öffnen sich am frühen Morgen und schließen schon um die Mittagszeit wieder; man muss also früh hinsehen. Die Wegwarte ist die wilde Stammform von Chicorée, Radicchio und Zichorienkaffee.",
+    "care": "Sehr genügsam und trockenheitsfest. Bildet eine tiefe Pfahlwurzel und lässt sich darum schlecht verpflanzen — am besten direkt an Ort und Stelle aussäen. Vollkommen winterhart, kommt mit magerem Boden bestens zurecht.",
+    "badges": [
+      "bienenfreundlich",
+      "essbar",
+      "Heilpflanze",
+      "Trockenheit",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Gemeine_Wegwarte"
+      }
+    ]
   }
 ]

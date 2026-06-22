@@ -3,7 +3,7 @@
 **Ort (Master):** `/Users/kburmeister/Documents/home/Klaus_nc/Balkonien`
 **Art:** Persönliches Projekt — Lexikon der Balkon-Pflanzen + Foto-Slideshow, als statische Website (GitHub Pages).
 **Online:** https://burmeister12439-futur2.github.io/balkonien/
-**Stand:** 20. Juni 2026 — **v16**
+**Stand:** 20. Juni 2026 — **v17**
 
 ## Worum es geht
 
@@ -25,7 +25,7 @@ Die Seite entsteht aus einer Datenquelle und einem Generator — nicht von Hand.
 
 ## Aktueller Inhalt (v15)
 
-- **43 Pflanzen** im Lexikon.
+- **44 Pflanzen** im Lexikon.
 - **23 Fotos** in der Slideshow.
 
 ## Was am 20.06.2026 geschah
@@ -45,6 +45,7 @@ Die Seite entsteht aus einer Datenquelle und einem Generator — nicht von Hand.
 
 ## Versionshistorie
 
+- **v17** (20.06.2026): Wegwarte (Cichorium intybus) ergänzt — 44 Pflanzen.
 - **v16** (20.06.2026): Alle Emoji-Symbole von der Website entfernt.
 - **v15** (20.06.2026): +5 Pflanzen (43 gesamt), +8 Fotos (23 gesamt); Projekt in `Klaus_nc/Balkonien` als Master zusammengeführt.
 - **v14** (Mai 2026): 38 Pflanzen, Slideshow „Impressionen 2026", neuer Look.
