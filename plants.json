@@ -1321,5 +1321,94 @@
         "url": "https://de.wikipedia.org/wiki/Gemeine_Wegwarte"
       }
     ]
+  },
+  {
+    "id": "ampfer-knoeterich",
+    "name": "Ampfer-Knöterich",
+    "wiss": "Persicaria lapathifolia",
+    "familie": "Knöterichgewächse (Polygonaceae)",
+    "wikiTitle": "Ampfer-Knöterich",
+    "emoji": "🌸",
+    "herkunft": "Eurasien (heute fast weltweit)",
+    "lebensdauer": "einjährig",
+    "hoehe": "20–80 cm",
+    "bluete": "Juli–Oktober (weiß-rosa Ähren)",
+    "sonne": "sonnig–halbschattig",
+    "wasser": "hoch",
+    "pflanzzeit": "Selbstaussaat / Aussaat Frühjahr",
+    "typ": "Wildkraut",
+    "desc": "Ein häufiges Wildkraut feuchter, nährstoffreicher Böden — oft als „blinder Passagier“ in Pflanzgefäßen. Die kleinen Blüten sitzen in dichten, leicht nickenden Ähren; die Blätter tragen häufig einen dunklen Fleck. Wertvolle Futterpflanze für Vögel und Insekten.",
+    "care": "Anspruchslos bis lästig — sät sich reichlich selbst aus. Mag Feuchtigkeit und Nährstoffe. Wer ihn nicht möchte, jätet ihn jung; wer Insekten und Vögel fördern will, lässt ihn stehen.",
+    "badges": [
+      "bienenfreundlich",
+      "Wildkraut",
+      "Vögel"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Ampfer-Kn%C3%B6terich"
+      }
+    ]
+  },
+  {
+    "id": "wiesen-flockenblume",
+    "name": "Wiesen-Flockenblume",
+    "wiss": "Centaurea jacea",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Wiesen-Flockenblume",
+    "emoji": "💜",
+    "herkunft": "Europa",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "30–90 cm",
+    "bluete": "Juni–Oktober (purpurrosa)",
+    "sonne": "vollsonnig",
+    "wasser": "mäßig",
+    "pflanzzeit": "Aussaat oder Pflanzung Frühjahr",
+    "typ": "Wildkraut",
+    "desc": "Robuste Wildstaude der Magerwiesen mit distelartig anmutenden, aber weichen purpurrosa Blütenköpfen. Eine der wichtigsten Nektarquellen für Schmetterlinge und Wildbienen im Hochsommer, mit sehr langer Blütezeit.",
+    "care": "Anspruchslos, trockenheitsverträglich und vollkommen winterhart. Mag magere, durchlässige Böden — kein Dünger nötig. Verblühtes stehen lassen für Vögel und zur Selbstaussaat.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlinge",
+      "Wildbienen",
+      "winterhart"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/Wiesen-Flockenblume"
+      }
+    ]
+  },
+  {
+    "id": "scheinquirl-maedchenauge",
+    "name": "Scheinquirl-Mädchenauge",
+    "wiss": "Coreopsis verticillata",
+    "familie": "Korbblütler (Asteraceae)",
+    "wikiTitle": "Mädchenaugen",
+    "emoji": "💛",
+    "herkunft": "Nordamerika",
+    "lebensdauer": "mehrjährig (Staude)",
+    "hoehe": "40–60 cm",
+    "bluete": "Juni–September (leuchtend gelb)",
+    "sonne": "vollsonnig",
+    "wasser": "niedrig",
+    "pflanzzeit": "Pflanzung Frühjahr",
+    "typ": "Blume",
+    "desc": "Ausdauerndes Mädchenauge mit fein zerteiltem, fast nadelartigem Laub, das an Quirle erinnert — daher der Name. Bildet über Wochen eine Wolke kleiner, sternförmiger gelber Blüten. Anders als das großblütige Mädchenauge ist es zuverlässig winterhart und langlebig.",
+    "care": "Liebt Sonne und durchlässigen, eher mageren Boden, sehr trockenheitsverträglich. Nach der Hauptblüte zurückschneiden bringt eine zweite Blüte. Winterhart und pflegeleicht.",
+    "badges": [
+      "bienenfreundlich",
+      "Schmetterlinge",
+      "winterhart",
+      "Trockenheit"
+    ],
+    "links": [
+      {
+        "label": "Wikipedia",
+        "url": "https://de.wikipedia.org/wiki/M%C3%A4dchenaugen"
+      }
+    ]
   }
 ]
